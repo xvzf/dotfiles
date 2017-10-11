@@ -14,16 +14,17 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplete'
 
 " NerdTree
 NeoBundle 'scrooloose/nerdtree'
 
 " Python Autocomplete
-NeoBundle 'davidhalter/jedi-vim'
+" NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'Valloric/YouCompleteMe'
 
 " Appearance
 NeoBundle 'mhartington/oceanic-next'
+NeoBundle 'nightsense/carbonized'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'ryanoasis/vim-devicons'
 
@@ -92,6 +93,7 @@ set relativenumber number
 set undofile
 set undodir="$HOME/.NVIM_UNDO_FILES"
 set cursorline
+set wrap linebreak nolist
 
 " Remember cursor position between vim sessions
 autocmd BufReadPost *
@@ -138,3 +140,4 @@ nnoremap <PageDown> j
 nnoremap <silent> <C-B> :colorscheme OceanicNextLight<CR>
 nnoremap <silent> <C-Q> :colorscheme OceanicNext<CR>
 vnoremap <C-/> :TComment
+map      "p o <ESC>x3a"<ESC>a
