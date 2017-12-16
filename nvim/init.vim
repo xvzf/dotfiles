@@ -1,51 +1,33 @@
 "NeoBundle Scripts-----------------------------
 if has('vim_starting')
   " Required:
-  set runtimepath+=/home/xvzf/.config/nvim/bundle/neobundle.vim/
+  set runtimepath+=/home/xvzf/.vim/bundle/neobundle.vim
 endif
 
 " Required:
-call neobundle#begin(expand('/home/xvzf/.config/nvim/bundle'))
+call neobundle#begin(expand('/home/xvzf/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-
-
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-
 " NerdTree
 NeoBundle 'scrooloose/nerdtree'
 
-" Python Autocomplete
-" NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'Valloric/YouCompleteMe'
-
 " Appearance
-NeoBundle 'mhartington/oceanic-next'
-NeoBundle 'nightsense/carbonized'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'sickill/vim-monokai'
+
+" Auto Complete
+NeoBundle 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Utils
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
-
-" Fuzzy Finder
-NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-NeoBundle 'junegunn/fzf.vim'
 
 " Navigation
 NeoBundle 'terryma/vim-multiple-cursors'
-
-" Git
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree-git-plugin'
 
 " Required:
 call neobundle#end()
@@ -76,7 +58,7 @@ syntax enable
 if (has("termguicolors"))
     set termguicolors
 endif
-colorscheme OceanicNext
+colorscheme monokai
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
@@ -86,7 +68,9 @@ set laststatus=2
 set wildmenu
 set list          " Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+set shiftwidth=4
 set tabstop=4
+set expandtab
 set showcmd
 set noshowmode
 set relativenumber number
@@ -103,6 +87,8 @@ autocmd BufReadPost *
 " center buffer around cursor when opening files
 autocmd BufRead * normal zz
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 "================================================================================
 
@@ -137,7 +123,5 @@ imap <C-v> <ESC>"+pa
 nnoremap <silent> <space> :noh<CR>
 nnoremap <PageUp> k
 nnoremap <PageDown> j
-nnoremap <silent> <C-B> :colorscheme OceanicNextLight<CR>
-nnoremap <silent> <C-Q> :colorscheme OceanicNext<CR>
 vnoremap <C-/> :TComment
-map      "p o <ESC>x3a"<ESC>a
+map "p o <ESC>x3a"<ESC>a
