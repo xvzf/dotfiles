@@ -1,2 +1,3 @@
-# dotfiles
-My config files - Mostly neovim setup
+# xvzf's Dotfiles
+
+`oh-my-zsh` and `vim` configuration
