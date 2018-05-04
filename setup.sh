@@ -18,7 +18,7 @@ THEME_PATH="${HOME}/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 
 # =========================================================
 
-INSTALL_CANDIDATES="${INSTALL_ANDIDATES} ${ZSH_DEPENDENCY}"
+INSTALL_CANDIDATES="${INSTALL_CANDIDATES} ${ZSH_DEPENDENCY}"
 
 # =========================================================
 
