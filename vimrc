@@ -11,7 +11,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'python-mode/python-mode'
-Plugin 'tmhedberg/SimpylFold'
 
 Plugin 'junegunn/fzf.vim'
 
