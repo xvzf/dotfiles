@@ -14,7 +14,6 @@ THEME_PATH="${HOME}/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 # =========================================================
 
 
-
 # Installs oh my zsh and copies all configuration files
 function install_zsh {
     echo " --> [+] Installing openzsh"
