@@ -4,21 +4,12 @@
 #    Dotfile installation script
 #
 
-# General dependencies
-INSTALL_CANDIDATES="git curl"
-
-# Dependencies for oh-my-zsh plugins, fuzzifind is a nice addition
-ZSH_DEPENDENCY="zsh python autopep8 python-virtualenvwrapper fzf"
 
 # For now agnoster-light theme
 THEME_URL="https://raw.githubusercontent.com/mkolosick/agnoster-light/master/agnoster-light.zsh-theme"
 THEME_PATH="${HOME}/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 
 
-
-# =========================================================
-
-INSTALL_CANDIDATES="${INSTALL_ANDIDATES} ${ZSH_DEPENDENCY}"
 
 # =========================================================
 
@@ -67,7 +58,7 @@ echo
 
 
 echo "[+] Installing requirements, please enter sudo password"
-sudo pacman -S $INSTALL_CANDIDATES
+sudo pacman -S git curl wget zsh python autopep8 python-virtualenvwrapper fzf
 
 echo "[+] Installing ZSH configuration"
 install_zsh

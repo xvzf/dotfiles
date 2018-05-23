@@ -11,9 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'python-mode/python-mode'
-
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tmhedberg/SimpylFold'
 
 Plugin 'junegunn/fzf.vim'
 
@@ -26,18 +24,8 @@ filetype plugin indent on    " required
 " ========================================================
 " Color theme configuration
 syntax enable
-set background=light
 silent! colorscheme solarized
-
-
-" ========================================================
-" Buggy.. Keeps crashing @INVESTIGATE
-" Airline configuration
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'solarized'
-" set showcmd
-" set noshowmode
+set background=light
 
 
 " ========================================================
@@ -50,24 +38,20 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 " ========================================================
-" python.mode
+" Python Plugins
 let g:pymode_python = 'python3'
+let g:pymode_rope = 1
+let g:pymode_rope_autoimport = 1
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
 
 
 " ========================================================
 " Custom functions
-" Remove trailing whitespaces on save
-autocmd BufWritePre * %s/\s\+$//e
 " Restore last position in file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
 endif
-
-
-" ========================================================
-" Clipboard
-set pastetoggle=<F2>
-set clipboard=unnamed
 
 
 " ========================================================
@@ -81,12 +65,25 @@ set mouse=a
 set relativenumber number
 
 " Python specific
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-set colorcolumn=80
+au BufNewFile,BufRead *.py set
+    \ tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ shiftround
+    \ expandtab
+    \ colorcolumn=80
+    \ foldlevel=99
+    \ autoindent
+au BufNewFile *.py set
+    \ fileformat=unix
+au BufWritePre *.py
+    \ %s/\s\+$//e
+
+" HTML/JS specific
+au BufNewFile,BufRead *.js, *.html, *.css set
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
 
 " Search specific
 set hlsearch
@@ -108,15 +105,24 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 
 " Tab navigation
+map <Leader>c <esc>:tabnew<CR>
 map <Leader>l <esc>:tabnext<CR>
 map <Leader>h <esc>:tabprevious<CR>
 
 " Useful bindings when working with python
-vnoremap <Leader>s :sort<CR>
+vnoremap <Leader>s <esc>:sort<CR>
 
 " Makes code block ident so much easier
 vnoremap < <gv
 vnoremap > >gv
 
+" Folding
+nnoremap <space> za
+map <Leader>fa zM
+map <Leader>fu zR
+
 " Plugin shortcuts
 map <C-b> :NERDTreeToggle<CR>
+
+" Search shortcuts
+map <Leader>q <esc>:noh<CR>
