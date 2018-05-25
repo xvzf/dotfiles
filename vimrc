@@ -43,6 +43,7 @@ let g:pymode_rope = 1
 let g:pymode_rope_autoimport = 1
 let g:pymode_rope_completion = 1
 let g:pymode_rope_complete_on_dot = 1
+set completeopt=menu,noinsert " default is menu,preview. Don't insert text until selection is made
 
 
 " ========================================================
@@ -63,6 +64,11 @@ set listchars=tab:•\ ,trail:•,extends:»,precedes:«
 set mouse=a
 set relativenumber number
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
 " Python specific
 au BufNewFile,BufRead *.py set
     \ tabstop=4
@@ -70,6 +76,7 @@ au BufNewFile,BufRead *.py set
     \ shiftwidth=4
     \ shiftround
     \ expandtab
+    \ foldmethod=indent
     \ colorcolumn=80
     \ foldlevel=99
     \ autoindent
@@ -98,6 +105,9 @@ set smartcase
 let mapleader=","
 
 " Split navigation
+map <Leader>v <esc>:vsplit<CR>
+map <Leader>s <esc>:split<CR>
+map <Leader>d <esc>:close<CR>
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -108,8 +118,9 @@ map <Leader>c <esc>:tabnew<CR>
 map <Leader>l <esc>:tabnext<CR>
 map <Leader>h <esc>:tabprevious<CR>
 
-" Useful bindings when working with python
-vnoremap <Leader>s <esc>:sort<CR>
+" Files
+map <Leader>f <esc>:FZF<CR>
+map <c-s> <esc>:w<CR>
 
 " Makes code block ident so much easier
 vnoremap < <gv
@@ -125,3 +136,10 @@ map <C-b> :NERDTreeToggle<CR>
 
 " Search shortcuts
 map <Leader>q <esc>:noh<CR>
+
+" === RST Shortcuts
+" Header
+map <Leader>rh yyppVr=2kVr=
+" Subline
+map <Leader>rs yypVr~
+
