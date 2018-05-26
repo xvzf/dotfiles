@@ -11,7 +11,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'python-mode/python-mode'
-
+Plugin 'tpope/vim-surround'
+Plugin 'marcweber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'junegunn/fzf.vim'
 
 
@@ -136,6 +140,10 @@ map <C-b> :NERDTreeToggle<CR>
 
 " Search shortcuts
 map <Leader>q <esc>:noh<CR>
+
+" === Python shortcuts
+" File header
+map <Leader>ph <esc>ggimodh<TAB>
 
 " === RST Shortcuts
 " Header

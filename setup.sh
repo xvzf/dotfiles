@@ -10,7 +10,6 @@ THEME_URL="https://raw.githubusercontent.com/mkolosick/agnoster-light/master/agn
 THEME_PATH="${HOME}/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 
 
-
 # =========================================================
 
 
@@ -40,6 +39,10 @@ function install_vim {
 
     echo " --> [+] Copying vim config"
     cat vimrc > ~/.vimrc
+
+    echo " --> [+] Copying snippets"
+    mkdir -p ~/.vim/snippets/
+    cp -f ./snippets/* ~/.vim/snippets/
 
     echo " --> [+] Installing vim plugins"
     vim +PluginInstall +qall
