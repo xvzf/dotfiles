@@ -4,7 +4,7 @@ snippet fun
 	    ${4:pass}
 
 snippet cfun
-	def ${1:fun}(self, ${2:param}):
+	def ${1:fun}(self${2}):
 	    """ ${3:@TODO} """
 	    ${4:pass}
 
@@ -37,12 +37,12 @@ snippet csafun
 	    ${4:pass}
 
 snippet class
-	class ${1:foo}(object):
-	    """ ${2:@TODO} """
+	class ${1:foo}(${2:object}):
+	    """ ${3:@TODO} """
 	
-	    def __init__(self, ${3:param}):
-	        """ ${4:@TODO}"""
-	        ${5:pass}
+	    def __init__(self, ${4:param}):
+	        """ ${5:@TODO}"""
+	        ${6:pass}
 
 snippet svar
 	self.${1:var} = ${2:value}
