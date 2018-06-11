@@ -39,8 +39,8 @@ au BufNewFile,BufRead *.py set
 
 au BufNewFile *.py set
     \ fileformat=unix
-au BufWritePre *.py
-    \ %s/\s\+$//e
+" au BufWritePre *.py
+"     \ %s/\s\+$//e
 
 " HTML/JS specific
 au BufNewFile,BufRead *.js, *.html, *.css set

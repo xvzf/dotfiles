@@ -9,12 +9,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'icymind/NeoSolarized'
+Plugin 'mhartington/oceanic-next'
 Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-surround'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
 
 if has('nvim')

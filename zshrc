@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="dieter"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -49,7 +49,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -60,13 +60,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  pep8
-#  autopep8
-  docker
-  python
-#  tmux
-  virtualenvwrapper
-  web-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,6 +92,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias vim="nvim"
 
 # Auto-completion with fzf
 [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null

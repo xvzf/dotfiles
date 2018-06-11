@@ -2,6 +2,7 @@ let g:LanguageClient_serverCommands = {
             \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
             \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
             \ 'python': ['/home/xvzf/.vim/virtualenv/bin/pyls', '-v'],
+            \ 'java': ['jdtls'],
             \ }
 let g:LanguageClient_autoStart = 1
 
