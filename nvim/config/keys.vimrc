@@ -2,28 +2,28 @@
 " Shortcuts
 
 " Set <Leader>
-let mapleader=","
+let mapleader="\<space>"
 
 " Terminal navigation
 tnoremap <esc><esc> <C-\><C-N>
 
 " Split navigation
-map <Leader>v <esc>:vsplit<CR>
-map <Leader>s <esc>:split<CR>
-map <Leader>d <esc>:close<CR>
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
+nmap <Leader>v <esc>:vsplit<CR>
+nmap <Leader>s <esc>:split<CR>
+nmap <Leader>d <esc>:close<CR>
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
 
 " Tab navigation
-map <Leader>c <esc>:tabnew<CR>
-map <Leader>l <esc>:tabnext<CR>
-map <Leader>h <esc>:tabprevious<CR>
+nmap <Leader>c <esc>:tabnew<CR>
+nmap <Leader>l <esc>:tabnext<CR>
+nmap <Leader>h <esc>:tabprevious<CR>
 
 " Files
-map <Leader>f <esc>:FZF<CR>
-map <c-s> <esc>:w<CR>
+nmap <Leader>f <esc>:FZF<CR>
+nmap <c-s> <esc>:w<CR>
 
 " Makes code block ident so much easier
 vnoremap < <gv
@@ -39,10 +39,7 @@ map <C-b> :NERDTreeToggle<CR>
 map <C-t> :TagbarToggle<CR>
 
 " Deoplete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-imap <C-l>     <Plug>(neosnippet_expand_or_jump)
-smap <C-l>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-l>     <Plug>(neosnippet_expand_target)
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Search shortcuts
-map <Leader>q <esc>:noh<CR>
+vnoremap <Leader>q <esc>:noh<CR>

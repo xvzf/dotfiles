@@ -1,33 +1,24 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+ " Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
-Plugin 'icymind/NeoSolarized'
-Plugin 'mhartington/oceanic-next'
-Plugin 'itchyny/lightline.vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-surround'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/limelight.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
+Plug 'icymind/NeoSolarized'
+" Plug 'mhartington/oceanic-next'
+Plug 'itchyny/lightline.vim'
+" Plug 'scrooloose/nerdtree.git'
+Plug 'tpope/vim-surround'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
-endif
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Initialize plugin system
+call plug#end()
