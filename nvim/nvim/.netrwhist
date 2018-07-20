@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/xvzf/Documents/projects/racecontrol/racecontrol/other/track-communicator'
-let g:netrw_dirhist_2='/home/xvzf/.config/nvim/config'
-let g:netrw_dirhist_3='/home/xvzf/Documents/projects/racecontrol/racecontrol'
-let g:netrw_dirhist_4='/home/xvzf/Documents/HTW/Programmieren2/ueb23/src'
-let g:netrw_dirhist_5='/home/xvzf/Documents/projects/random/asyncspider/asyncspider'

@@ -9,14 +9,9 @@ endif
 " ========================================================
 " Default configuration
 syntax on
-set number
 set wildmenu
 set list
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«
 set mouse=a
-set ruler
-set relativenumber number
-
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -43,7 +38,7 @@ au BufNewFile *.py set
 "     \ %s/\s\+$//e
 
 " HTML/JS specific
-au BufNewFile,BufRead *.js, *.html, *.css set
+au BufNewFile,BufRead *.js set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
@@ -54,3 +49,5 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Fold specific
+set foldlevelstart=1
