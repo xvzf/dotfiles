@@ -21,7 +21,6 @@ nmap <c-l> <c-w>l
 nmap <Leader>b <esc>:Buffers<CR>
 nmap <Leader>t <esc>:BTags<CR>
 nmap <Leader>a <esc>:Ag<CR>
-nmap <Leader><Space> <esc>:pclose<CR>
 
 " Files
 nmap <Leader>f <esc>:Files<CR>
@@ -35,21 +34,8 @@ vnoremap > >gv
 map <C-b> :NERDTreeToggle<CR>
 map <C-t> :TagbarToggle<CR>
 
+" Deoplete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 " Search shortcuts
 vnoremap <Leader>q <esc>:noh<CR>
-
-" LanguageClient
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-
-" Search
-vnoremap <CR> y/\V<C-R>"<CR>
-
-" NCM2
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
