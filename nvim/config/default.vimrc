@@ -34,11 +34,12 @@ au BufNewFile,BufRead *.py set
 
 au BufNewFile *.py set
     \ fileformat=unix
+" It annoys me every time but it is uncool to have a 1k empty lines+ PR request
 " au BufWritePre *.py
 "     \ %s/\s\+$//e
 
 " HTML/JS specific
-au BufNewFile,BufRead *.js set
+au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
@@ -50,4 +51,4 @@ set ignorecase
 set smartcase
 
 " Fold specific
-set foldlevelstart=1
+" set foldlevelstart=1

@@ -21,10 +21,18 @@ Plug 'junegunn/limelight.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'phpactor/ncm2-phpactor'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'sbdchd/neoformat'
+
 
 " Initialize plugin system
 call plug#end()
