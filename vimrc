@@ -77,9 +77,13 @@ vnoremap > >gv
 " Remap ESC
 imap <C-c> <Esc>
 
+" Leader bindings
+let mapleader = ","
+
 
 " ==== python-mode
 let g:pymode_python = 'python3'
+nmap <Leader>r <esc>:PymodeRun<CR>
 
 " ==== vim-go
 " let g:go_fmt_command = "goimports"
