@@ -52,12 +52,12 @@ endif
 
 au BufNewFile *.py set
     \ fileformat=unix
-" It annoys me every time but it is uncool to have a 1k empty lines+ PR request
+" It annoys me every time but it is uncool to have a 1k empty lines+ PR request, I'll do it anyway :-)
 au BufWritePre *
     \ %s/\s\+$//e
 
 " 2 Spaces
-au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.yml,*.json,*.sql set
+au BufNewFile,BufRead *.sh,*.js,*.jsx,*.ts,*.tsx,*.yml,*.json,*.sql set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2

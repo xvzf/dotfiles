@@ -66,6 +66,7 @@ plugins=(
   git
   docker
   zsh-autosuggestions
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,7 +100,9 @@ bindkey '^ ' autosuggest-accept
 export TERM="xterm-256color"
 
 
+alias ls=exa
 alias v=vim
+alias python=python3
 
 # Setup path
 export PATH="${PATH}:/home/xvzf/go/bin/"
