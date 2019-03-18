@@ -6,6 +6,7 @@ HISTFILE=~/.zsh_history
 SAVEHIST=2000
 setopt inc_append_history # Save before execution
 setopt share_history # Same history for every instance
+unset command_not_found_handle # Fedora fix :-)
 
 
 # =============
