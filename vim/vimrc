@@ -1,3 +1,5 @@
+source ~/dotfiles/vim/vim-plug/plug.vim
+
 set nocompatible                " Enables us Vim specific features
 filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
@@ -5,6 +7,7 @@ filetype plugin indent on       " ... and enable filetype detection
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 
@@ -86,14 +89,13 @@ let g:pymode_python = 'python3'
 nmap <Leader>r <esc>:PymodeRun<CR>
 
 " ==== vim-go
-" let g:go_fmt_command = "goimports"
-" let g:go_autodetect_gopath = 1
-" let g:go_list_type = "quickfix"
-"
-" let g:go_highlight_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_generate_tags = 1
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
 
