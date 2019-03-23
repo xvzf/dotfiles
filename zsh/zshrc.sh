@@ -13,6 +13,7 @@ unset command_not_found_handle # Fedora fix :-)
 #   Settings
 # =============
 
+export ZSH_CUSTOM="${HOME}/dotfiles/zsh/plugins/custom-oh-my-zsh"
 export ZSH="${HOME}/dotfiles/zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
@@ -23,7 +24,7 @@ export PATH="${PATH}:/home/xvzf/go/bin/"
 #   Plugins
 # =============
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="xvzf"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"

@@ -53,10 +53,14 @@ if has('persistent_undo')
   set undodir=~/tmp/vim/undo/
 endif
 
+" Something like fuzzy find builtin
+set path+=**
+
 au BufNewFile *.py set
     \ fileformat=unix
+
 " It annoys me every time but it is uncool to have a 1k empty lines+ PR request, I'll do it anyway :-)
-au BufWritePre *
+au BufWritePre *.py
     \ %s/\s\+$//e
 
 " 2 Spaces
@@ -71,8 +75,6 @@ au BufNewFile,BufRead *.py set
     \ softtabstop=4
     \ shiftwidth=4
 
-"
-"
 " Makes code block ident so much easier
 vnoremap < <gv
 vnoremap > >gv
@@ -83,6 +85,8 @@ imap <C-c> <Esc>
 " Leader bindings
 let mapleader = ","
 
+" Ctags
+command! MakeTags !ctags -R .
 
 " ==== python-mode
 let g:pymode_python = 'python3'
@@ -98,4 +102,3 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
-
