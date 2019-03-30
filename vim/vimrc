@@ -64,7 +64,7 @@ au BufWritePre *.py
     \ %s/\s\+$//e
 
 " 2 Spaces
-au BufNewFile,BufRead *.sh,*.js,*.jsx,*.ts,*.tsx,*.yml,*.json,*.sql set
+au BufNewFile,BufRead *.sh,*.js,*.jsx,*.ts,*.tsx,*.yml, *.yaml, *.json,*.sql set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
