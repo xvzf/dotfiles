@@ -19,6 +19,8 @@ export VISUAL=vim
 export TERM="xterm-256color"
 export PATH="${PATH}:/home/xvzf/go/bin/"
 
+export ANSIBLE_HOST_KEY_CHECKING=False
+
 
 # =============
 #   Plugins
