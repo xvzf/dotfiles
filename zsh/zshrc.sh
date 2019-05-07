@@ -50,7 +50,7 @@ source ~/dotfiles/zsh/keybindings.sh
 # =============
 
 alias v=vim # Easier to type
-alias ls=exa # Use exa for better highlighting
+# alias ls=exa # Use exa for better highlighting
 alias python=python3 # Just to be safe
 
 
