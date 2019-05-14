@@ -7,7 +7,7 @@ filetype plugin indent on       " ... and enable filetype detection
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mhinz/vim-startify'
 call plug#end()
 
