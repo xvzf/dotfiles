@@ -1,0 +1,307 @@
+" ###########################################################################
+" #                                                                         #
+" # This file contains my personal vim configurations.                      #
+" #                                                                         #
+" # @package    dotfiles/vim                                                #
+" # @filename   vimrc                                                       #
+" # @author     Amir Heinisch <mail@amir-heinisch.de>                       #
+" # @link       https://amir-heinisch.de                                    #
+" # @version    1.0                                                         #
+" #                                                                         #
+" ###########################################################################
+
+" {{{ # GENERAL SETUP #
+
+" Not tested on older versions...
+" TODO: Increase to vim 8 later.
+if v:version < 700
+    finish
+endif
+
+" Loading pathogen (plugin manager)
+" Only as fallback, if native vim plugin manager is not compiled.
+" TODO: Remove in later versions.
+if !has('packages') 
+    silent! execute pathogen#infect()
+endif
+
+" No needs to be compatible with vi.
+set nocompatible
+
+" Disable Modelines. Security risk and do not like them.
+" NOTE! Use editorconfig project instead.
+set nomodeline
+set modelines=0
+
+" Disable custom vimrc per directory. Security risk.
+set noexrc
+
+" Set shell.
+set shell=/bin/zsh
+
+" Relaod file if changed outside vim.
+set autoread
+
+" Set a default tags file location.
+set tags=.tags
+
+" Set viminfo file location if needed.
+if has('viminfo') 
+"   set viminfo=
+    set viminfofile=~/.cache/vim/viminfo
+endif
+
+" Make undo persistent if possible.
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.cache/vim/undo/
+endif
+
+" # }}}
+
+" {{{ # UI STUFF #
+
+    " Enable a statusline.
+    set laststatus=2
+    " Set statusline.
+    set statusline=%!CreateStatusline()
+
+    " Do not show vim mode in line below statusline.
+    set noshowmode
+    " Ruler is not needed because of the statusline.
+    set noruler
+
+    " Only redraw if really needed.
+    set lazyredraw
+
+    " Set default window split behavior
+    set equalalways
+    set splitright
+    set splitbelow
+
+    " Set height of preview window.
+    set previewheight=100
+
+    " Remove bells
+    set noerrorbells
+    set novisualbell
+    set t_vb=
+
+    " # }}}
+
+    " {{{ # TEXT FORMAT #
+
+    " Set encoding.
+    set encoding=utf-8
+    set fileencoding=utf-8
+
+    " Enable syntax processing.
+    syntax enable
+
+    " Enable filetype detection.
+    filetype plugin indent on
+
+    " Match parenthesis to mark them.
+    set showmatch
+
+    " Disable spell checking.
+    set nospell spelllang=de_de,en_us
+
+    " Highlight the current line.
+    set cursorline
+    " Highlight the current column.
+    set cursorcolumn
+
+    " Enable line numbering.
+    set number
+    set numberwidth=5
+    " set relativenumber
+
+    " Show the last entered command in the bottom right.
+    set showcmd
+
+    " Keep the cursor visible when scrolling.
+    set scrolloff=5
+
+    " Fix backspace problem.
+    set backspace=indent,eol,start
+
+    " Show invisible characters.
+    set list
+    set listchars=tab:»\ ,eol:↲\,space:•
+
+    " # }}}
+
+" {{{ # KEYMAP / SHORTCUTS #
+
+" {{{ ## General ##
+
+" Set space as leader key.
+let mapleader =' '
+" Stop space doing other stuff.
+nnoremap <leader> <nop>
+
+" Move esc to jk.
+inoremap jk <ESC>
+
+" Write file.
+nnoremap <leader><CR> :w<CR>
+
+" Arrows are not vim style. 
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" ## }}}
+
+" {{{ ## Navigation ##
+
+" open prev buffer.
+noremap <leader>q :bp<CR>
+" open next buffer
+noremap <leader>w :bn<CR> 
+
+" scroll viewport.
+nnoremap <C-u> <C-e><C-e><C-e>
+nnoremap <C-i> <C-y><C-y><C-y>
+
+" scroll pages.
+" nnoremap <D><C-j> <C-u>
+" nnoremap <D><C-k> <C-d>
+
+" ## }}}
+
+"{{{  ## Folding ##
+
+nmap , za
+
+" ## }}}
+
+" # }}}
+
+" {{{ # Helpers #
+
+" Set statusline color.
+" TODO: move in theme.
+function! SetStatuslineColor()
+    " Set statusline colors.
+    hi User1 ctermbg=red ctermfg=white
+    hi User2 ctermbg=darkgrey ctermfg=red
+    hi User3 ctermbg=darkgrey ctermfg=white
+    hi User4 ctermbg=grey ctermfg=darkgrey
+    hi User5 ctermbg=grey ctermfg=white
+    hi User6 ctermbg=white ctermfg=grey
+    hi User7 ctermbg=white ctermfg=darkgrey
+    hi User8 ctermbg=black ctermfg=white
+endfunction
+call SetStatuslineColor()
+
+" Create a simple status line" Create a simple status line.
+function! CreateStatusline()
+
+    " Set powerline delimiter if needed.
+    " TODO: check if powerline font is installed.
+    if (1==1)
+        let delimiter = ""
+        let rdelimiter = ""
+    else
+        let delimiter = "\uE0B0"
+        let rdelimiter = "\uE0B2"
+    endif
+
+    let statusline=""
+    " Current mode
+    let statusline .= "%1*\ %{toupper(GetModeName(mode()))}\ "
+    let statusline .= "%2*" . delimiter
+    " Get buffer number.
+    let statusline .= "%3* %n "
+    let statusline .= "%4*" . delimiter
+    " Current file path.
+    let statusline .= "%5* %F "
+    let statusline .= "%6*" . delimiter
+    " Current file type.
+    let statusline .= "%7  %y "
+    let statusline .= "%5*" . delimiter
+    " Flags: modified, readonly, help, ?.
+    let statusline .= "\ {\ %(%m%r%h%w%)\ }\ "
+    " Git branch.
+    let statusline .= "%{StatuslineGit()}"
+    " File size.
+    let statusline .= "(\ %{FileSize()}\ )\ "
+    " Move rest to the right.
+    let statusline .= "%<%="
+    " @TODO - add errors here.
+    " Show tpope opsession plugin.
+    "let statusline .= "\ %{ObsessionStatus()}\ "
+    " Show current line / absolute lines (percent) : letter in line.
+    let statusline .= "%4*" . rdelimiter
+    let statusline .= "%3* [ %l/%L (%p%%) : %c ] "
+    " Show encoding / file format.
+    let statusline .= "%2*" . rdelimiter
+    let statusline .= "%1* [ %{&fileencoding?&fileencoding:&encoding} / %{&fileformat} ] "
+    " Return line
+    return statusline
+
+endfunction
+
+" This function returns the long mode name.
+function! GetModeName(mode)
+    " This variable contains all modes.
+    " TODO: v-Block not working.
+    let l:currentmode={
+      \ 'n'  : 'Normal',
+      \ 'no' : 'N·Operator Pending ',
+      \ 'v'  : 'Visual',
+      \ 'V'  : 'V·Line ',
+      \ 'CTRL-V' : 'V·Block ',
+      \ 's'  : 'Select ',
+      \ 'S'  : 'S·Line ',
+      \ 'x19' : 'S·Block ',
+      \ 'i'  : 'Insert',
+      \ 'R'  : 'R ',
+      \ 'Rv' : 'V·Replace ',
+      \ 'c'  : 'Command ',
+      \ 'cv' : 'Vim Ex ',
+      \ 'ce' : 'Ex ',
+      \ 'r'  : 'Prompt ',
+      \ 'rm' : 'More ',
+      \ 'r?' : 'Confirm ',
+      \ '!'  : 'Shell ',
+      \ 't'  : 'Terminal '
+      \}
+    return get(l:currentmode, a:mode, 'OUT OF ORDER')
+endfunction
+
+" This function returns the file size of the current file.
+function! FileSize()
+    let bytes = getfsize(expand('%:p'))
+    if (bytes >= 1024)
+        let kbytes = bytes / 1024
+    endif
+    if (exists('kbytes') && kbytes >= 1000)
+        let mbytes = kbytes / 1000
+    endif
+    if bytes <= 0
+        return '0'
+    endif
+    if (exists('mbytes'))
+        return mbytes . 'MB'
+    elseif (exists('kbytes'))
+        return kbytes . 'KB'
+    else
+        return bytes . 'B'
+    endif
+endfunction
+
+" This function returns the current branch.
+function! StatuslineGit()
+    let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    return strlen(l:branchname) > 0?l:branchname.' ':''
+endfunction
+
+" # }}}

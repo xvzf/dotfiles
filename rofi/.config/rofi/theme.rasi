@@ -1,0 +1,106 @@
+// ##########################################################################
+// #                                                                        #
+// # This file contains my personal apple spotlight like rofi them.         #
+// #                                                                        #
+// # @package    dotfiles/rofi                                              #
+// # @filename   theme.rasi                                                 #
+// # @author     Amir Heinisch <mail@amir-heinisch.de>                      #
+// # @link       https://amir-heinisch.de                                   #
+// # @version    1.0 (05/05/2019)                                           #
+// #                                                                        #
+// ##########################################################################
+
+configuration {
+
+    // Names of views.
+    display-ssh:    "" ;
+    display-run:    "";
+    display-drun:   "";
+    display-window: """ ;
+    display-combi:  "";
+    show-icons:     true;
+
+}
+
+* {
+
+    // Define some colors.
+    fg: #ffeeddff;
+    tr: #00000000;
+    bg: #111111ec;
+
+    font: "Droid Sans Mono 12";
+
+    foreground: @fg;
+    color:  @fg;
+    text-color:  @fg;
+    background-color: @bg;
+
+    transparency: "real";
+}
+
+#window {
+    anchor:   north;
+    location: north;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    padding: 0px;
+    background-color: @tr;
+    children:  [mainbox];
+}
+
+#mainbox {
+    padding: 25%;
+    spacing: 2px;
+    background-color: @tr;
+    children: [inputbar, listview]; 
+}
+
+#inputbar {
+    background-color: @bg;
+    border-color: @tr;
+    padding:5px;
+    border: 2px 2px 0px 2px;
+    border-radius: 10px;
+    children: [prompt, entry];
+}
+
+#prompt {
+    padding: 10px 10px 0px 10px;
+    font: "SF Pro Display Ultralight 16";
+    background-color: @tr;
+}
+
+#entry {
+    padding: 10px 10px 10px 0px;
+    font: "SF Pro Display Light 16";
+    background-color: @tr;
+}
+
+#listview {
+    reverse: false;
+    background-color: @bg;
+    padding: 5px;
+    border-radius: 10px 10px 10px 10px;
+    border: 5px;
+    border-color: @tr;
+    spacing: 5px;
+    cycle: false;
+    scrollbar: false;
+    lines: 7;
+    columns: 1;
+    children: [element];
+}
+
+#element {
+    padding: 5px;
+    background-color: @tr;
+    border-color: #555555cc;
+    border: 0px 0px 1px 0px;
+}
+
+#element selected {
+    background-color: #555555cc;
+    border-radius: 5px;
+}

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+# TODO: change ~ to $HOME
+# TODO: add support for other tools.
+
+scrot '%Y_%m_%d_%H_%M_%S.png' -e 'mv $f ~/.local/pictures/screenshots/'

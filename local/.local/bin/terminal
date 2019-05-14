@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+for terminal in "$TERMINAL" termite x-terminal-emulator urxvt rxvt termit terminator uxterm xterm gnome-terminal lxterminal mate-terminal kitty guake; do
+    if command -v "$terminal" > /dev/null 2>&1; then
+        exec "$terminal" "$@"
+    fi
+done
+
+notify-send -a "i3 Window Manager" "No terminal found" "Please install a terminal emulator."

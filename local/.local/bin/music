@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+for musicPlayer in "$MUSIC" spotify; do
+    if command -v "$musicPlayer" > /dev/null 2>&1; then
+        exec "$musicPlayer" "$@"
+    fi
+done
+
+notify-send -a "i3 Window Manager" "No music player found"  "Please install a music player."

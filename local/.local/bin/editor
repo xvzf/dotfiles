@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+for editor in "$VISUAL" "$EDITOR" vim vi nano nvim emacst gvim; do
+    if command -v "$editor" > /dev/null 2>&1; then
+        exec "$editor" "$@"
+    fi
+done
+
+notify-send -a "i3 Window Manager" "No editor found" "Please install one of the known editors."

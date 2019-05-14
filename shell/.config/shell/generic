@@ -1,0 +1,329 @@
+#############################################################################
+#                                                                           #
+# This file loads all my generic shell stuff.                               #
+#                                                                           #
+# @package    dotfiles/shell                                                #
+# @filename   generic                                                       #
+# @author     Amir Heinisch <mail@amir-heinisch.de>                         #
+# @link       https://amir-heinisch.de                                      #
+# @version    1.0 (14/05/2019)                                              #
+#                                                                           #
+#############################################################################
+
+# {{{ # Environment Variables #
+
+# Set lang.
+export LANG=en_US.UTF-8
+
+# Set default applications.
+export EDITOR='vim'
+export VISUAL='vim'
+export TERM='xterm-256color'
+export PAGER='less'
+export MUSIC="spotify"
+export BROWSER="chromium"
+
+# Set XDG paths + my custom ones.
+#
+# My folder structure should be like this:
+#
+# All cofig files are here: ${HOME}/.config.
+#
+# Everything else will be in ${HOME}/.local/
+#
+#   - bin       : my custom executables.
+#   - log       : user logs.
+#   - lib       : local libs
+#   - man       : local man pages.
+#   - share     : application data.
+#   - fonts     : for new fonts.
+#   - history   : apps hist files.
+#   - pictures  : wallpapers and lockscreens.
+#
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_HISTORY_HOME="${HOME}/.local/history"
+export XDG_MAN_HOME="${HOME}/.local/man"
+export XDG_LOG_HOME="${HOME}/.local/log"
+
+# Set zsh config location.
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# Set manpage PATH.
+export MANPATH="${XDG_MAN_HOME}:/usr/local/man:${MANPATH}"
+export MANPAGER="less" # Would vim work?
+export MANWIDTH='70' # Better way?
+
+# Set path: user bin | $PATH | go | npm | ruby |
+# TODO: check if ruby is installed and add this: $(ruby -e 'print Gem.user_dir')/bin
+# TODO: do I need this? typeset -U path
+export PATH="${HOME}/.local/bin/:${PATH}:${HOME}/.cargo/bin/:${HOME}/go/bin/:${HOME}/.npm-packages/bin/"
+
+# TODO: Is this zsh specific? Why do I need this?
+export SSH_KEY_PATH="${HOME}/.ssh/keys/"
+export ARCHFLAGS="-arch x86_64"
+
+# Set proxy here if needed:
+# export http_proxy="http://localhost:3128"
+# export https_proxy="http://localhost:3128"
+
+# }}}
+
+# {{{ # Functions #
+
+# TODO: make functions generic for all shells.
+
+# go up one time
+function __one_dir_up() {
+  BUFFER="cd .."
+  zle accept-line
+}
+zle -N __one_dir_up
+bindkey "^k" __one_dir_up
+
+# Edit and rerun
+function __edit_in_vim_and_rerun() {
+  BUFFER="fc"
+  zle accept-line
+}
+zle -N __edit_in_vim_and_rerun
+bindkey "^e" __edit_in_vim_and_rerun
+
+# Add Sudo
+function __add_sudo() {
+  BUFFER="sudo "$BUFFER
+  zle end-of-line
+}
+zle -N __add_sudo
+bindkey "^s" __add_sudo
+
+# Autocompletion with strg+space
+bindkey '^ ' autosuggest-accept
+
+# Change dir and list contents.
+function __cd_ls() {
+    cd $1;
+    ls
+}
+
+# This function creates gitingore files from gitignore.io.
+function __gitignore() {
+    curl -L -s https://www.gitignore.io/api/$@
+}
+
+# Show hidden characters in less.
+function __hidden_less() { 
+    cat -A $@ | less
+}
+
+# }}}
+
+# {{{ # Aliases #
+
+alias c="clear"
+alias l="exa --long --header --git | less"
+alias les="ls -ahl --color=always | less -r"
+alias ls="exa"
+alias open="xdg-open"
+alias tm="tmuxp load main"
+alias cd=__cd_ls
+alias gi=__gitignore
+
+# Safety first.
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+
+# Disk usage.
+alias df="df -ah"
+alias free="free -m"
+alias du="du -c -h -s -d1"
+
+# Setups.
+alias•wde="sudo•docker•run•--name=wde•-d•-p•80:80•-v•/home/user1/Docker/projects/:/var/www/html/•web_dev_env"
+# Run container on daimler server.
+alias rev="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodam/dive:latest"
+alias jenkins="docker run --rm -d -p 8080:8080 -p 5000:5000 -v $(pwd)jenkins_data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
+# Run and backup gitlab docker container on my macbook.
+alias glab="docker run --detach --hostname gitlab.example.com --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume ~/srv/gitlab/config:/etc/gitlab --volume ~/srv/gitlab/logs:/var/log/gitlab --volume ~/srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest"
+alias bglab="docker exec -t gitlab gitlab-rake gitlab:backup:create"
+
+# }}}
+
+# {{{ # TOOL CONFIGS #
+
+# TODO: check for every tool if it is installed.
+
+# {{{ ## Elinks ##
+
+# Change config path.
+alias elinks="elinks -config-dir ${XDG_CONFIG_HOME}/elinks/"
+
+## }}}
+
+# {{{ ## Feh ##
+
+# Prevent feh from writing background file.
+alias feh="feh --nofehbg"
+
+## }}}
+
+## {{{ ## Xinit ##
+
+# Change config path.
+export XINITRC="$CONFIGDIR/xinit/rc"
+
+## }}}}
+
+## {{{ ## Chromium ##
+
+# Change user data path.
+#export CHROME_USER_DATA_DIR="${XDG_DATA_HOME}/chromium/"
+
+## }}}
+
+## {{{ ## Sqlite3 ##
+
+# Check if sqlite3 is installed.
+if type sqlite3 &>/dev/null
+then
+
+    # Change history file location.
+    export SQLITE_HISTORY="${XDG_HISTORY_HOME}/sqlite3"
+
+    # Change config path.
+    alias sqlite3="sqlite3 -init ${XDG_CONFIG_HOME}/sqlite3/rc"
+
+fi
+
+## }}}
+
+## {{{ ## Gopass ##
+
+# Source autocompletion stuff.
+# TODO: make switch for current shell. Better to make this in zshrc and maybe use plugin.
+# Try this on macos: source /dev/stdin <<<"$(gopass completion bash)"
+# source <(gopass completion zsh)
+# source <(gopass completion bash)
+
+## }}}}
+
+## {{{ ## Homebrew ##
+
+# Check if brew is installed.
+if type brew &>/dev/null
+then
+
+    # Disable homebrew analytics.
+    export HOMEBREW_NO_ANALYTICS=1
+
+    # Add autocompletion for brew.
+    # TODO: this is only zsh related! use oh-my-zsh plugin?
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+fi
+
+## }}}
+
+## {{{ ## Ansible ##
+
+# Ansible.
+export ANSIBLE_HOST_KEY_CHECKING=False
+
+## }}}
+
+## {{{ ## Vim ##
+
+# Add aliases for terminal wordpress blogging.
+alias nb="vim +BlogNew"
+alias eb="vim +BlogList"
+
+## }}}
+
+## {{{ ## Tmux ##
+
+alias t="tmux -f ${XDG_CONFIG_HOME}/tmux/conf"
+alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/conf"
+
+# NOTE! .tmuxp.yaml in a project dir also works.
+export TMUXP_CONFIGDIR="${XDG_CONFIG_HOME}/tmux/tmuxp"
+
+## }}}
+
+## {{{ ## Mamp ##
+
+# Start and stop server.
+# TODO: only on mac.
+alias mstart="sh /Applications/MAMP/bin/start.sh"
+alias mstop="sh /Applications/MAMP/bin/stop.sh"
+
+## }}}
+
+## {{{ ## Newsboat ##
+
+# Make call shorter.
+alias n="newsboat"
+#alias n="newsboat -r --url-file=${XDG_DATA_HOME}/newsboat/urls --cache-file=${XDG_CACHE_HOME}/newsboat/cache --config-file=${XDG_CONFIG_HOME}/newsboat/config --log-file=${XDG_LOG_HOME}/newsboat"
+
+## }}}
+
+## {{{ ## Archey3 ##
+
+alias archey3="archey3 --config=${XDG_CONFIG_HOME}/archey3/config"
+
+## }}}
+
+## {{{ ## Trans ##
+
+# Translate de to en.
+alias etrans="trans en:de "
+# Translate en to de.
+alias gtrans="trans de:en "
+
+## }}}
+
+## {{{ ## Less ##
+
+# Change history file path.
+export LESSHISTFILE="${XDG_HISTORY_HOME}/less"
+
+## }}}
+
+## {{{ ## Protonvpn ##
+
+alias vpn="protonvpn-cli"
+
+## }}}
+
+## {{{ ## Wget ##
+
+# Change config and history paths.
+# Other option: export WGETRC="${XDG_CONFIG_HOME}/wget/rc"
+alias wget="wget --config=${XDG_CONFIG_HOME}/wget/rc --hsts-file=${XDG_HISTORY_HOME}/wget"
+
+## }}}
+
+# {{{ ## Vim ##
+
+# Change files pathes:
+# Or use neovim.
+# https://tlvince.com/vim-respect-xdg
+
+## }}}
+
+## {{{ ## Pulsemixer ##
+
+alias pm="pulsemixer"
+
+## }}}
+
+## {{{ ## Gnupg ##
+
+# Change config path.
+# other option: alias gpg="gpg --homedir ${XDG_CONFIG_HOME}/gnupg"
+export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
+
+## }}}
+
+# }}}

@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+for browser in "$BROWSER" chromium firefox; do
+    if command -v "$browser" > /dev/null 2>&1; then
+        exec "$browser" "$@"
+    fi
+done
+
+notify-send -a "i3 Window Manager" "No browser found" "Please install a browser."

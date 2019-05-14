@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# This script checks if all needed applications are installed and uses gnu stow
+# to symlinks all needed files.
+
+# Check if gnu stow is installed.
+if [ -z $(command -v stow) ]
+then
+    echo "Please install gnu stow first."
+    exit 1
+fi
+
+# Set tool packs.
+essentials=("tmux" "shell" "zsh" "vim")
+mac=("brew" "terminal")
+all=("${essentials[@]}" "${mac[@]}")
+
+# Parse input.
+case $1 in
+    -h)
+        # TODO: write better help prompt.
+        echo "This is a help prompt."
+	exit 0
+    ;;
+    -m)
+        # Only link macos tools.
+        tools=${mac[@]}
+    ;;
+    -a)
+        # Link all tools.
+        tools=${all[@]}
+    ;;
+    *)
+        # Only link essentials as default.
+        tools=${essentials[@]}
+    ;;
+esac
+
+# Link files.
+for tool in "${tools[@]}"
+do
+    if [ $(stow -d $(pwd) -t $HOME $tool) ]
+    then
+        echo "$tool config is in place now."
+
+        if [ -z $(command -v $tool) ]
+        then
+            echo "WARNING! $tool is not in PATH."
+        fi
+    fi
+done

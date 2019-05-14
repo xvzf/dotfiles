@@ -1,0 +1,9 @@
+session_name: main
+windows:
+    - window_name: home
+      focus: true
+      panes:
+        - null
+    - window_name: vServer
+      panes:
+        - ssh vServer

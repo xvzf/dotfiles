@@ -1,0 +1,170 @@
+! ###########################################################################
+! #                                                                         #
+! # This file contains my personal rofi configurations.                     #
+! #                                                                         #
+! # @package    dotfiles/rofi                                               #
+! # @filename   config                                                      #
+! # @author     Amir Heinisch <mail@amir-heinisch.de>                       #
+! # @link       https://amir-heinisch.de                                    #
+! # @version    1.0 (05/05/2019)                                            #
+! #                                                                         #
+! ###########################################################################
+
+! Terminal to use.
+rofi.terminal: terminal
+
+! Theme to use.
+rofi.theme: theme.rasi
+
+! Use combi mode as default.
+rofi.modi: combi,drun,run,ssh
+
+! Let rofi autodetect hardware threads.
+rofi.threads: 0
+
+! Do not run case sensitive.
+rofi.case-sensitive: false
+
+! Clear search text at the beginning.
+rofi.filter:
+
+! Use continues scrolling.
+rofi.scroll-method: 1
+
+! Tokenize the input.
+rofi.tokenize: true
+
+! Specify the matching algorithm used. Current the following methods are supported.
+! - normal: Match the int string.
+! - regex: Match a regex input.
+! - glob: Match a glob pattern.
+! - fuzzy: Do a fuzzy match.
+rofi.matching: glob
+
+! Show matching characters.
+rofi.show-match: true
+
+! Use lazy keyboard grab.
+rofi.lazy-grab: true
+
+! Disable history.
+rofi.disable-history: true
+
+! When one entry is left do not automatically select it.
+rofi.auto-select: false
+
+! Disable sorting.
+rofi.sort: false
+rofi.sort-method: normal
+
+! Open rofi on the monitor which shows the mouse pointer.
+rofi.monitor: -5
+
+! DPI
+rofi.dpi: -1
+
+! Make rofi create a pid file.
+rofi.pid: /run/user/1000/rofi.pid
+
+! Click the mouse outside of the rofi window to exit.
+rofi.click-to-exit: true
+
+! Open in sidebar-mode.
+! In this mode a list of all enabled modes is shown at the bottom. (See -modi option)
+rofi.sidebar-mode: false
+
+
+! KEY BINDINGS
+! ----------------------------------------------------------------------------
+
+! Paste primary selection
+rofi.kb-primary-paste: Control+V
+
+! Paste clipboard
+rofi.kb-secondary-paste: Control+v
+
+! Delete previous word
+rofi.kb-remove-word-back: Alt+BackSpace
+
+! Delete previous char
+!rofi.kb-remove-char-back: BackSpace
+
+! Delete till the start of line
+rofi.kb-remove-to-sol: Control+BackSpace
+
+! Previous row.
+rofi.kb-row-up: Up,Alt+k
+
+! Next row.
+rofi.kb-row-down: Down,Alt+j
+
+! Next mode.
+rofi.kb-mode-next: Alt+l
+
+! Previous mode.
+rofi.kb-mode-previous: Alt+h
+
+! Accept entry.
+rofi.kb-accept-entry: Return
+
+! Use entered text as command (in ssh/run modi)
+rofi.kb-accept-custom: Shift+Return
+
+! Launch the application in a terminal (in run mode). Return the 
+! selected entry and move to the next item while keeping Rofi open.
+rofi.kb-accept-alt: Control+Return
+
+! Quit rofi.
+rofi.kb-cancel: Alt+space,Escape
+
+
+! SSH SETTINGS
+! ----------------------------------------------------------------------------
+
+! The ssh client to use.
+rofi.ssh-client: ssh
+
+! Command to run.
+rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
+
+! Parse the /etc/hosts file for entries.
+rofi.parse-hosts: false
+
+! Parse the ~/.ssh/known_hosts file for entries.
+rofi.parse-known-hosts: false
+
+
+! RUN SETTINGS
+! ----------------------------------------------------------------------------
+
+! Set drun row content.
+rofi.drun-display-format: {name} [({generic})]
+
+! Set command ({cmd}) to execute when running an application.
+rofi.run-command: {cmd}
+
+! Set command to execute when running an application in a shell.
+rofi.run-shell-command: {terminal} -e {cmd}
+
+! If set, use an external tool to generate list of executable commands.
+! Uses 'run-command'.
+rofi.run-list-command:
+
+
+! COMBI SETTINGS
+! ----------------------------------------------------------------------------
+
+! The modi to combine in combi mode. For syntax to see -modi.
+rofi.combi-modi: drun,run,ssh
+
+! WINDOW MODE
+! ----------------------------------------------------------------------------
+
+! Set the name to use for windowcd mode. This is used as prompt and in combi-browser.
+rofi.display-windowcd:
+
+! Format what is being displayed for windows.
+rofi.window-format: #{w} {c:0} {t}
+
+! Set command to execute on selected window for custom action.
+rofi.window-command: xkill -id {window}

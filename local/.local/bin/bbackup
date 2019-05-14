@@ -1,0 +1,66 @@
+#!/usr/bin/env sh
+
+# Set remote repo.
+export BORG_REPO=""
+# Set password command.
+export BORG_PASSPHRASE=""
+
+# Some helpers and error handling.
+info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
+trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
+
+info "Starting backup"
+
+# Backup stuff.
+borg create                         \
+    --verbose                       \
+    --progress                      \
+    --filter AME                    \
+    --list                          \
+    --stats                         \
+    --show-rc                       \
+    --compression lz4               \
+    --exclude /var/run              \
+    --exclude '/root/.cache/*'      \
+    --exclude '/root/.local/history*' \
+    --exclude '/home/*/.cache/*'    \
+    --exclude '/home/*/.local/history*' \
+                                    \
+    ::'{hostname}-{now}'            \
+                                    \
+    /home                           \
+    /etc                            \
+    /root                           \
+    /usr                            \
+
+backup_exit=$?
+
+info "Pruning repository"
+
+# Clean borg repo.
+borg prune                          \
+    --list                          \
+    --verbose                       \
+    --stats                         \
+    --prefix '{hostname}-'          \
+    --show-rc                       \
+    --keep-within   24H             \
+    --keep-daily    7               \
+    --keep-weekly   4               \
+    --keep-monthly  12              \
+    --keep-yearly   1               \
+
+prune_exit=$?
+
+# use highest exit code as global exit code
+global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+
+if [ ${global_exit} -eq 0 ]; then
+    info "Backup and Prune finished successfully"
+elif [ ${global_exit} -eq 1 ]; then
+    info "Backup and/or Prune finished with warnings"
+else
+    info "Backup and/or Prune finished with errors"
+fi
+
+exit ${global_exit}
