@@ -17,7 +17,9 @@ export ZSH_CUSTOM="${HOME}/dotfiles/zsh/plugins/custom-oh-my-zsh"
 export ZSH="${HOME}/dotfiles/zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
-export PATH="${PATH}:/home/$USER/go/bin/:/home/$USER/.cargo/bin/"
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH="${PATH}:/home/$USER/bin/:$GOPATH/bin/:/home/$USER/.cargo/bin/:$GOROOT/bin"
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 
