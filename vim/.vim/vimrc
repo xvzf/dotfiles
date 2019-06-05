@@ -61,6 +61,11 @@ endif
 
 " {{{ # UI STUFF #
 
+"set termguicolors
+"let ayucolor="light"
+"colorscheme ayu
+colorscheme ron
+
     " Enable a statusline.
     set laststatus=2
     " Set statusline.
@@ -176,11 +181,34 @@ nnoremap <C-i> <C-y><C-y><C-y>
 
 " ## }}}
 
-"{{{  ## Folding ##
+" {{{  ## Folding ##
 
 nmap , za
 
 " ## }}}
+
+" # }}}
+
+" {{{ # Plugins #
+
+" NERDTree
+nnoremap <leader><Tab> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+
+" Tagbar
+nnoremap <leader>+ :TagbarOpenAutoClose<CR>
+let g:tagbar_sort=0
+let g:tagbar_autofocus=1
+let g:tagbar_width=50
+let g:tagbar_compact=1
+let g:tagbar_show_linenumber=1
+let g:tagbar_previewwin_pos=""
+let g:tagbar_autopreview=1
+
+" Startify.
+let g:startify_files_number=5
+let g:startify_change_to_vcs_root=1
 
 " # }}}
 

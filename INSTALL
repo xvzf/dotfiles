@@ -24,22 +24,24 @@ case $1 in
     ;;
     -m)
         # Only link macos tools.
-        tools=${mac[@]}
+	tools=("${mac[@]}")
     ;;
     -a)
         # Link all tools.
-        tools=${all[@]}
+	tools=("${all[@]}")
     ;;
     *)
         # Only link essentials as default.
-        tools=${essentials[@]}
+	tools=("${essentials[@]}")
     ;;
 esac
 
 # Link files.
+PWD=$(pwd)
 for tool in "${tools[@]}"
 do
-    if [ $(stow -d $(pwd) -t $HOME $tool) ]
+    stow -d $PWD -t $HOME $tool
+    if [ $? == 0 ]
     then
         echo "$tool config is in place now."
 

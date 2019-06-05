@@ -13,5 +13,5 @@
 # Load all generic stuff from ${HOME}/.config/shell/generic.
 if [ -f "${HOME}/.config/shell/generic" ]
 then
-    source "${SPATH}/.config/shell/generic"
+    source "${HOME}/.config/shell/generic"
 fi

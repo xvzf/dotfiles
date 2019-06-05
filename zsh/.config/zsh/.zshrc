@@ -27,6 +27,11 @@ setopt share_history
 setopt inc_append_history
 unset command_not_found_handle # Fedora fix from mri...try out.
 
+# Set completion options.
+# compinit -d "${XDG_CACHE_HOME}/zcompdump"
+
+# TODO: move zcomp file to cache or history.
+
 # {{{ ## OH-MY-ZSH OPTIONS ##
 
 # brew does not allow root and runs unde user admin.
@@ -35,7 +40,7 @@ ZSH_DISABLE_COMPFIX=true
 
 # Set theme.
 # TODO: maybe make my own day and night themes?
-ZSH_THEME="agnoster"
+ZSH_THEME=""
 
 # Plugins.
 plugins=(adb git docker)
@@ -58,7 +63,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Load oh-my-zsh.
 # TODO: maybe live without oh-my-zsh overhead?!
-export ZSH="${XDG_CONFIG_HOME}/zsh/oh-my-zsh"
+export ZSH="${XDG_CONFIG_HOME}/zsh/plugins/oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 # Load plugins without oh-my-zsh.

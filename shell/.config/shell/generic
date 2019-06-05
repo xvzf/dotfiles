@@ -126,7 +126,6 @@ alias l="exa --long --header --git | less"
 alias les="ls -ahl --color=always | less -r"
 alias ls="exa"
 alias open="xdg-open"
-alias tm="tmuxp load main"
 alias cd=__cd_ls
 alias gi=__gitignore
 
@@ -141,13 +140,13 @@ alias free="free -m"
 alias du="du -c -h -s -d1"
 
 # Setups.
-alias•wde="sudo•docker•run•--name=wde•-d•-p•80:80•-v•/home/user1/Docker/projects/:/var/www/html/•web_dev_env"
+#alias•wde="sudo•docker•run•--name=wde•-d•-p•80:80•-v•/home/user1/Docker/projects/:/var/www/html/•web_dev_env"
 # Run container on daimler server.
-alias rev="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodam/dive:latest"
-alias jenkins="docker run --rm -d -p 8080:8080 -p 5000:5000 -v $(pwd)jenkins_data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
+#alias rev="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodam/dive:latest"
+#alias jenkins="docker run --rm -d -p 8080:8080 -p 5000:5000 -v $(pwd)jenkins_data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
 # Run and backup gitlab docker container on my macbook.
-alias glab="docker run --detach --hostname gitlab.example.com --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume ~/srv/gitlab/config:/etc/gitlab --volume ~/srv/gitlab/logs:/var/log/gitlab --volume ~/srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest"
-alias bglab="docker exec -t gitlab gitlab-rake gitlab:backup:create"
+#alias glab="docker run --detach --hostname gitlab.example.com --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume ~/srv/gitlab/config:/etc/gitlab --volume ~/srv/gitlab/logs:/var/log/gitlab --volume ~/srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest"
+#alias bglab="docker exec -t gitlab gitlab-rake gitlab:backup:create"
 
 # }}}
 
@@ -243,6 +242,7 @@ alias eb="vim +BlogList"
 
 ## {{{ ## Tmux ##
 
+alias tm="tmuxp load main"
 alias t="tmux -f ${XDG_CONFIG_HOME}/tmux/conf"
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/conf"
 
@@ -305,6 +305,9 @@ alias wget="wget --config=${XDG_CONFIG_HOME}/wget/rc --hsts-file=${XDG_HISTORY_H
 ## }}}
 
 # {{{ ## Vim ##
+
+# Just to be save.
+alias vi="vim"
 
 # Change files pathes:
 # Or use neovim.
