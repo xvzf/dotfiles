@@ -51,7 +51,9 @@ source ~/dotfiles/zsh/keybindings.sh
 # =============
 
 alias v=vim # Easier to type
-alias ls=exa # Use exa for better highlighting
+if which exa &> /dev/null; then
+  alias ls=exa # Use exa for better highlighting
+fi
 alias python=python3 # Just to be safe
 
 
