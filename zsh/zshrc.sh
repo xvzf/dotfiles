@@ -17,10 +17,11 @@ export ZSH_CUSTOM="${HOME}/dotfiles/zsh/plugins/custom-oh-my-zsh"
 export ZSH="${HOME}/dotfiles/zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
-export PATH="${PATH}:/home/$USER/go/bin/"
+export PATH="${PATH}:$HOME/go/bin/"
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 export GOMODULES111=on
+export GOPATH=$HOME/go
 
 
 # =============
@@ -44,6 +45,7 @@ source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/plugins/kubectl_lazyload.sh
 source ~/dotfiles/zsh/keybindings.sh
+source ~/.secrets
 
 
 # =============
@@ -51,6 +53,7 @@ source ~/dotfiles/zsh/keybindings.sh
 # =============
 
 alias v=vim # Easier to type
+alias kc=kubectl
 if which exa &> /dev/null; then
   alias ls=exa # Use exa for better highlighting
 fi
