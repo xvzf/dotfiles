@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'hashivim/vim-terraform'
 Plug 'mhinz/vim-startify'
 call plug#end()
 
@@ -65,7 +66,7 @@ au BufWritePre *.py
     \ %s/\s\+$//e
 
 " 2 Spaces
-au BufNewFile,BufRead *.md,*.sh,*.js,*.jsx,*.ts,*.tsx,*.yml,*.yaml,*.json,*.sql set
+au BufNewFile,BufRead *.tf,*.md,*.sh,*.js,*.jsx,*.ts,*.tsx,*.yml,*.yaml,*.json,*.sql set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
