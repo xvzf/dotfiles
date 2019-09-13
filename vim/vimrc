@@ -5,10 +5,10 @@ filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
 
 call plug#begin('~/.vim/plugged')
-Plug 'sjl/badwolf'
+" Plug 'sjl/badwolf'
+Plug 'owickstrom/vim-colors-paramount'
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'hashivim/vim-terraform'
 Plug 'mhinz/vim-startify'
 call plug#end()
 
@@ -32,7 +32,8 @@ set expandtab
 " ========================================================
 " Colors
 syntax enable
-colorscheme badwolf
+set background=dark
+colorscheme paramount
 
 
 " ========================================================
