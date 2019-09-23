@@ -48,6 +48,7 @@ set term=screen-256color
 syntax enable
 set background=dark
 colorscheme paramount
+set cursorline
 
 " Lightline
 set laststatus=2
