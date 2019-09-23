@@ -5,16 +5,20 @@ filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
 
 call plug#begin('~/.vim/plugged')
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'sheerun/vim-polyglot'
-" Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'mhinz/vim-startify'
-" Fuzzyfind
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-call plug#end()
 
+" Functionality
+Plug 'sheerun/vim-polyglot'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug '~/.fzf'
+
+" Appearance
+Plug 'itchyny/lightline.vim'
+Plug 'owickstrom/vim-colors-paramount'
+
+" Coding
+" Plug 'python-mode/python-mode', { 'branch': 'develop' }
+call plug#end()
 
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set lazyredraw
@@ -34,11 +38,14 @@ set expandtab
 
 " ========================================================
 " Colors
+let g:solarized_termcolors=256
 set term=screen-256color
 syntax enable
 set background=dark
 colorscheme paramount
 
+" Lightline
+set laststatus=2
 
 " ========================================================
 " Custom functions
@@ -99,11 +106,6 @@ let mapleader = ","
 
 " Ctags
 command! MakeTags !ctags -R .
-
-
-" ==== python-mode
-let g:pymode_python = 'python3'
-nmap <Leader>r <esc>:PymodeRun<CR>
 
 " ==== vim-go
 let g:go_fmt_command = "goimports"

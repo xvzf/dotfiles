@@ -29,7 +29,7 @@ case `uname` in
 esac
 
 export GOPATH=$HOME/golang
-export PATH="${PATH}:/home/$USER/bin/:$GOPATH/bin/:/home/$USER/.cargo/bin/:$GOROOT/bin"
+export PATH="${PATH}:$HOME/bin/:$GOPATH/bin/:$HOME/.cargo/bin/:$GOROOT/bin:$HOME/.fzf/bin:$GOROOT/bin"
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 export GOMODULES111=on
