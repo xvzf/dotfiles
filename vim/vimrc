@@ -1,6 +1,7 @@
 source ~/dotfiles/vim/vim-plug/plug.vim
 
 set nocompatible                " Enables us Vim specific features
+set visualbell                  " Don't be annoying :-)
 filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
 
@@ -10,14 +11,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
 Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 
 " Appearance
 Plug 'itchyny/lightline.vim'
 Plug 'owickstrom/vim-colors-paramount'
+Plug 'scrooloose/nerdtree'
 
 " Coding
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'fatih/vim-go'
 call plug#end()
 
 set ttyfast                     " Indicate fast terminal conn for faster redraw
@@ -107,8 +112,12 @@ let mapleader = ","
 " Ctags
 command! MakeTags !ctags -R .
 
+" NerdTree
+:nnoremap <C-b> :NERDTreeToggle<CR>
+
 " ==== vim-go
 let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
