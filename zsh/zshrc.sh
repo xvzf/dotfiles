@@ -17,8 +17,18 @@ export ZSH_CUSTOM="${HOME}/dotfiles/zsh/plugins/custom-oh-my-zsh"
 export ZSH="${HOME}/dotfiles/zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
+
+# Depending on MacOS and Linux, set a different gopath
+case `uname` in
+  Darwin)
+    export GOROOT=/usr/local/opt/go/libexec
+    ;;
+  Linux)
+    export GOROOT=/usr/local/go
+    ;;
+esac
+
+export GOPATH=$HOME/golang
 export PATH="${PATH}:/home/$USER/bin/:$GOPATH/bin/:/home/$USER/.cargo/bin/:$GOROOT/bin"
 
 export ANSIBLE_HOST_KEY_CHECKING=False
