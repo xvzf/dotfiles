@@ -19,7 +19,7 @@ export VISUAL=vim
 export TERM="xterm-256color"
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH="${PATH}:/home/$USER/bin/:$GOPATH/bin/:/home/$USER/.cargo/bin/:$GOROOT/bin"
+export PATH="${PATH}:$HOME/bin/:$GOPATH/bin/:$HOME/.cargo/bin/:$GOROOT/bin:$HOME/.fzf/bin"
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 export GOMODULES111=on
