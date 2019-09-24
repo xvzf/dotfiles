@@ -59,6 +59,9 @@ source ~/dotfiles/zsh/plugins/kubectl_lazyload.sh
 source ~/dotfiles/zsh/keybindings.sh
 source ~/.secrets
 
+[[ $- == *i* ]] && source "~/.fzf/shell/completion.zsh" 2> /dev/null
+source ~/.fzf/shell/key-bindings.zsh
+
 
 # =============
 #   Alias
