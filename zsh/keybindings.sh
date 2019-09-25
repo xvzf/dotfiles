@@ -12,7 +12,7 @@ function __edit_in_vim_and_rerun() {
   zle accept-line
 }
 zle -N __edit_in_vim_and_rerun
-bindkey "^e" __edit_in_vim_and_rerun
+bindkey "^g" __edit_in_vim_and_rerun
 
 # Add Sudo
 function __add_sudo() {
