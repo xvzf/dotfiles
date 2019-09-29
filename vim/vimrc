@@ -18,6 +18,7 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'itchyny/lightline.vim'
 Plug 'owickstrom/vim-colors-paramount'
+Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 
 " Coding
@@ -43,15 +44,21 @@ set expandtab
 
 " ========================================================
 " Colors
-let g:solarized_termcolors=256
-set term=screen-256color
 syntax enable
+"let g:solarized_termcolors=16
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+set term=screen-256color
 set background=dark
-colorscheme paramount
 set cursorline
+colorscheme solarized
 
 " Lightline
 set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+
 
 " ========================================================
 " Custom functions
