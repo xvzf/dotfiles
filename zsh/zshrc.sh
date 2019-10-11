@@ -28,7 +28,7 @@ case `uname` in
     ;;
 esac
 
-export GOPATH=$HOME/golang
+export GOPATH=$HOME/go
 export PATH="${PATH}:$HOME/bin/:$GOPATH/bin/:$HOME/.cargo/bin/:$GOROOT/bin:$HOME/.fzf/bin:$GOROOT/bin"
 
 export ANSIBLE_HOST_KEY_CHECKING=False
