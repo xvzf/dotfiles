@@ -74,6 +74,16 @@ if which exa &> /dev/null; then
 fi
 alias python=python3 # Just to be safe
 
+# =============
+#   Custom Shortcuts
+# =============
+
+kga(){kubectl get all}
+kgi(){kubectl get ingress}
+kgs(){kubectl get secret}
+kc_nettool(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
+
+
 
 # =============
 #   Functions
@@ -84,3 +94,5 @@ __cd_ls() {
   ls
 }
 alias cd=__cd_ls
+
+
