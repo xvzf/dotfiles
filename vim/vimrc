@@ -20,6 +20,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'http://gitlab.com/yorickpeterse/happy_hacking.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/indentLine'
 
 " Coding
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -27,12 +28,9 @@ Plug 'fatih/vim-go'
 call plug#end()
 
 set ttyfast                     " Indicate fast terminal conn for faster redraw
-set lazyredraw
 set backspace=indent,eol,start  " Makes backspace key more powerful.
 set noswapfile
 set wildmenu
-set list
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«
 set number
 set relativenumber number
 set hlsearch
@@ -46,7 +44,7 @@ set expandtab
 " Colors
 syntax enable
 set term=screen-256color
-set cursorline
+" set cursorline
 colorscheme happy_hacking
 
 " Lightline
