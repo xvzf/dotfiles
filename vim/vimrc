@@ -18,7 +18,7 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'itchyny/lightline.vim'
 Plug 'owickstrom/vim-colors-paramount'
-Plug 'altercation/vim-colors-solarized'
+Plug 'http://gitlab.com/yorickpeterse/happy_hacking.vim'
 Plug 'scrooloose/nerdtree'
 
 " Coding
@@ -45,14 +45,9 @@ set expandtab
 " ========================================================
 " Colors
 syntax enable
-" let g:solarized_termcolors=16
-let g:solarized_termtrans = 1
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
 set term=screen-256color
-set background=dark
 set cursorline
-colorscheme solarized
+colorscheme happy_hacking
 
 " Lightline
 set laststatus=2
