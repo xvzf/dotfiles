@@ -66,6 +66,8 @@ endif
 if has('unnamedplus')
   set clipboard^=unnamed
   set clipboard^=unnamedplus
+else
+  set clipboard=unnamed
 endif
 
 " This enables us to undo files even if you exit Vim.
