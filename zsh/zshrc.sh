@@ -83,6 +83,8 @@ google-chrome() {
 #   Custom Shortcuts
 # =============
 
+ka(){kubectl apply $@}
+kgp(){kubectl get pods -o wide $@}
 kga(){kubectl get all $@}
 kgi(){kubectl get ingress $@}
 kgs(){kubectl get secret $@}
