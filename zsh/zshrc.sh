@@ -74,6 +74,11 @@ if which exa &> /dev/null; then
 fi
 alias python=python3 # Just to be safe
 
+# If we are on macos, provide a shortcut to open google chrome
+google-chrome() {
+  open -a "Google Chrome" "$1"
+}
+
 # =============
 #   Custom Shortcuts
 # =============
@@ -94,5 +99,4 @@ __cd_ls() {
   ls
 }
 alias cd=__cd_ls
-
 
