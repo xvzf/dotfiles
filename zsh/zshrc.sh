@@ -84,6 +84,7 @@ google-chrome() {
 # =============
 
 ka(){kubectl apply $@}
+kd(){kubectl delete $@}
 kgp(){kubectl get pods -o wide $@}
 kga(){kubectl get all $@}
 kgi(){kubectl get ingress $@}
