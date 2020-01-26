@@ -67,7 +67,12 @@ source ~/.fzf/shell/key-bindings.zsh
 #   Alias
 # =============
 
-alias v=vim # Easier to type
+if which exa &> /dev/null; then
+  alias v=nvim
+else
+  alias v=vim
+fi
+
 alias kc=kubectl
 if which exa &> /dev/null; then
   alias ls=exa # Use exa for better highlighting
