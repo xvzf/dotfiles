@@ -1,3 +1,3 @@
 # xvzf's Dotfiles
 
-Mostly `vim` configuration
+Install using `sh setup.sh
