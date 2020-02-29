@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-CONFIGS="zsh"
+CONFIGS="zsh git"
 
 BREW_PACKAGES="fzf nvim ripgrep exa zsh git go tmux stow"
 BREW_CASK_PACKAGES="docker google-chrome visual-studio-code"
@@ -18,5 +18,6 @@ esac
 
 # Symlink build files
 for CONFIG in $CONFIGS; do
+	echo "[+] Copying config files for ${CONFIG} ..."
 	stow $CONFIG
 done
