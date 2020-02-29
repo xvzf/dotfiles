@@ -118,6 +118,7 @@ let g:go_highlight_function_parameters = 1
 let g:go_highlight_types = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_operators = 1
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 let g:startify_change_to_vcs_root = 1
 let g:startify_fortune_use_unicode = 1
