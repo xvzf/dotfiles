@@ -1,4 +1,4 @@
-source ~/dotfiles/vim/vim-plug/plug.vim
+source ~/.vim/vim-plug/plug.vim
 
 set nocompatible                " Enables us Vim specific features
 set visualbell                  " Don't be annoying :-)

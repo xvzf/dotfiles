@@ -8,7 +8,7 @@
 	path = zsh/.zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "vim/vim-plug"]
-	path = vim/vim-plug
+	path = vim/.vim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 [submodule "nvim/.cache/dein/repos/github.com/Shougo/dein.vim"]
 	path = nvim/.cache/dein/repos/github.com/Shougo/dein.vim

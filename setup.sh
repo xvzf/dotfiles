@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-CONFIGS="zsh git tmux nvim"
+CONFIGS="zsh git tmux vim nvim"
 
 BREW_PACKAGES="fzf nvim ripgrep exa zsh git go tmux stow"
 BREW_CASK_PACKAGES="docker google-chrome visual-studio-code"
