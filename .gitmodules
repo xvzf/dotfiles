@@ -10,3 +10,6 @@
 [submodule "vim/vim-plug"]
 	path = vim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "nvim/.cache/dein/repos/github.com/Shougo/dein.vim"]
+	path = nvim/.cache/dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim.git

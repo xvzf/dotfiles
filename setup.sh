@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-CONFIGS="zsh git"
+CONFIGS="zsh git tmux nvim"
 
 BREW_PACKAGES="fzf nvim ripgrep exa zsh git go tmux stow"
 BREW_CASK_PACKAGES="docker google-chrome visual-studio-code"
@@ -21,3 +21,6 @@ for CONFIG in $CONFIGS; do
 	echo "[+] Copying config files for ${CONFIG} ..."
 	stow $CONFIG
 done
+
+# Auto install nvim packages
+nvim -c ":call dein#install()" -c ":call dein#check_install()" -c ":q"
