@@ -13,25 +13,25 @@ unset command_not_found_handle # Fedora fix :-)
 #   Settings
 # =============
 
-export ZSH_CUSTOM="${HOME}/dotfiles/zsh/plugins/custom-oh-my-zsh"
-export ZSH="${HOME}/dotfiles/zsh/plugins/oh-my-zsh"
+export ZSH_CUSTOM="${HOME}/.zsh/plugins/custom-oh-my-zsh"
+export ZSH="${HOME}/.zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
 
 # Depending on MacOS and Linux, set a different gopath
-case `uname` in
-  Darwin)
-    export GOROOT=/usr/local/opt/go/libexec
-    ;;
-  Linux)
-    export GOROOT=/usr/local/go
-    ;;
-esac
+# case `uname` in
+#   Darwin)
+#     export GOROOT=/usr/local/opt/go/libexec
+#     ;;
+#   Linux)
+#     export GOROOT=/usr/local/go
+#     ;;
+# esac
 
 export GOPATH=$HOME/go
-export PATH="${PATH}:$HOME/bin/:$GOPATH/bin/:$HOME/.cargo/bin/:$GOROOT/bin:$HOME/.fzf/bin:$GOROOT/bin"
+export PATH="${PATH}:$HOME/bin/:$GOPATH/bin/:$HOME/.cargo/bin/:$GOROOT/bin:$GOROOT/bin"
 
-export ANSIBLE_HOST_KEY_CHECKING=False
+# export ANSIBLE_HOST_KEY_CHECKING=False
 export GOMODULES111=on
 export GOPATH=$HOME/go
 
@@ -47,20 +47,18 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
   git
-  docker
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# source ~/dotfiles/zsh/plugins/vi-mode.plugin.zsh
-source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/dotfiles/zsh/plugins/kubectl_lazyload.sh
-source ~/dotfiles/zsh/keybindings.sh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/plugins/kubectl_lazyload.sh
+source ~/.zsh/keybindings.sh
 source ~/.secrets
 
-[[ $- == *i* ]] && source "~/.fzf/shell/completion.zsh" 2> /dev/null
-source ~/.fzf/shell/key-bindings.zsh
+# [[ $- == *i* ]] && source "~/.fzf/shell/completion.zsh" 2> /dev/null
+# source ~/.fzf/shell/key-bindings.zsh
 
 
 # =============
@@ -73,7 +71,6 @@ else
   alias v=vim
 fi
 
-alias kc=kubectl
 if which exa &> /dev/null; then
   alias ls=exa # Use exa for better highlighting
 fi
@@ -88,13 +85,19 @@ google-chrome() {
 #   Custom Shortcuts
 # =============
 
+alias k=kubectl
+kgc(){kubectl config get-contexts $@}
+kcc(){kubectl config use-context $@}
+
 ka(){kubectl apply $@}
 kd(){kubectl delete $@}
 kgp(){kubectl get pods -o wide $@}
 kga(){kubectl get all $@}
 kgi(){kubectl get ingress $@}
-kgs(){kubectl get secret $@}
-kc_nettool(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
+kgs(){kubectl get services $@}
+kgss(){kubectl get secrets $@}
+kgcm(){kubectl get cm $@}
+k_debug(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
 
 
 
