@@ -74,6 +74,9 @@ fi
 if which exa &> /dev/null; then
   alias ls=exa # Use exa for better highlighting
 fi
+if which podman &> /dev/null; then
+  alias docker=podman # Use podman on fedora hosts
+fi
 alias python=python3 # Just to be safe
 
 # If we are on macos, provide a shortcut to open google chrome
