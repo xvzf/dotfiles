@@ -102,11 +102,7 @@ kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
 k_debug(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
 
-dockerdev(){
-  docker run -it \
-    -v $HOME/projects:/home/xvzf/projects
-    quay.io/xvzf/devbox:latest
-}
+dockerdev(){docker run -it --rm -v $HOME/projects:/home/xvzf/projects "quay.io/xvzf/devbox:latest" $@}
 
 # =============
 #   Functions
