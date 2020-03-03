@@ -47,6 +47,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
   git
+  shrink-path
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,7 +103,7 @@ kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
 k_debug(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
 
-dockerdev(){docker run -it --rm -v $HOME/projects:/home/xvzf/projects "quay.io/xvzf/devbox:latest" $@}
+dockerdev(){docker run -it --rm -v $HOME/projects:/home/xvzf/projects -v $HOME/.secrets:/home/xvzf/.secrets -v $HOME/.kube:/home/xvzf/.kube -v $HOME/.ssh:/home/xvzf/.ssh "quay.io/xvzf/devbox:latest" $@}
 
 # =============
 #   Functions

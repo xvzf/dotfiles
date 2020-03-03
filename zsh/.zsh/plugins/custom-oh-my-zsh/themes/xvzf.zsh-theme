@@ -7,7 +7,7 @@ set_prompt() {
     PS1="%(?::%{$fg_bold[red]%} ! )"
     PS1+="%{$fg_bold[white]%}[%{$reset_color%}"
     PS1+="%{$fg[white]%}${HOST} %{$reset_color%}"
-    PS1+="%{$fg_bold[cyan]%}%c%{$reset_color%}"
+    PS1+="%{$fg_bold[cyan]%}$(shrink_path -f)%{$reset_color%}"
     if (( ${+VIRTUAL_ENV} )); then
         PS1+=" %{$fg_bold[green]%}${VIRTUAL_ENV:t}%{$reset_color%}"
     fi
