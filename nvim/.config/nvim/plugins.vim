@@ -31,12 +31,14 @@ if dein#load_state('~/.cache/dein')
 
   " == Git
   call dein#add('tpope/vim-fugitive')
+  call dein#add('airblade/vim-gitgutter')
 
   " == Appearence
   call dein#add('sheerun/vim-polyglot')
   call dein#add('Yggdroot/indentLine')
-  call dein#add('yorickpeterse/happy_hacking.vim')
-  call dein#add('itchyny/lightline.vim')
+  call dein#add('arcticicestudio/nord-vim')
+  " call dein#add('itchyny/lightline.vim')
+  call dein#add('vim-airline/vim-airline')
 
   call dein#end()
   call dein#save_state()

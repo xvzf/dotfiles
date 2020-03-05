@@ -21,6 +21,7 @@ Plug 'owickstrom/vim-colors-paramount'
 Plug 'http://gitlab.com/yorickpeterse/happy_hacking.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Yggdroot/indentLine'
+Plug 'arcticicestudio/nord-vim'
 
 " Coding
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }

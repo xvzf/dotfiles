@@ -40,6 +40,10 @@ export GOPATH=$HOME/go
 #   Plugins
 # =============
 
+# Include dircolors
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+
 ZSH_THEME="xvzf"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"

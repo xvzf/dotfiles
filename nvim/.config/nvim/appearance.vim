@@ -1,4 +1,3 @@
-
 " Editor settings
 set visualbell
 set number
@@ -6,12 +5,18 @@ set numberwidth=5
 set laststatus=2
 set noshowmode
 set ruler
+set cursorline
 set signcolumn=yes
 
 " Colors
-colorscheme happy_hacking
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_guifg = 'DarkGray'
+if (has("termguicolors"))
+  set termguicolors
+endif
+let g:nord_cursor_line_number_background = 1
+colorscheme nord
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
 
 " Startify settings
 let g:startify_change_to_vcs_root = 1

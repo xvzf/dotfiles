@@ -13,3 +13,6 @@
 [submodule "nvim/.cache/dein/repos/github.com/Shougo/dein.vim"]
 	path = nvim/.cache/dein/repos/github.com/Shougo/dein.vim
 	url = https://github.com/Shougo/dein.vim.git
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
