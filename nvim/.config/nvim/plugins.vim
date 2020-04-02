@@ -27,7 +27,7 @@ if dein#load_state('~/.cache/dein')
   " == Autocomplete, Snippets
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('preservim/nerdcommenter')
-  call dein#add('neoclide/coc-snippets')
+  " call dein#add('neoclide/coc-snippets')
 
   " == Git
   call dein#add('tpope/vim-fugitive')

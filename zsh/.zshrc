@@ -58,9 +58,18 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/plugins/kubectl_lazyload.sh
 source ~/.zsh/keybindings.sh
 source ~/.secrets
+
+# Autocompletions
+source ~/.zsh/completions/_istioctl
+source ~/.zsh/plugins/kubectl_lazyload.sh
+case `uname` in
+  Darwin)
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    ;;
+esac
 
 # [[ $- == *i* ]] && source "~/.fzf/shell/completion.zsh" 2> /dev/null
 # source ~/.fzf/shell/key-bindings.zsh
