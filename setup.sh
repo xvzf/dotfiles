@@ -9,8 +9,8 @@ CONFIGS="zsh git tmux vim nvim"
 COC_PLUGINS="coc-go"
 
 ### MacOS Packages
-BREW_PACKAGES="fzf neovim jq ripgrep exa zsh git go tmux stow python3 node k3d"
-BREW_CASK_PACKAGES="docker google-chrome visual-studio-code"
+BREW_PACKAGES="fzf neovim jq ripgrep exa zsh git go tmux stow python3 node k3d mas"
+BREW_CASK_PACKAGES="docker google-chrome visual-studio-code slack jira-client google-cloud-sdk"
 
 ### Alpine Linux Packages
 ALPINE_PACKAGES="fzf neovim jq exa zsh git go tmux stow openssh gcc python3-dev nodejs curl zsh npm"
