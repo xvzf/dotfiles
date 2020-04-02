@@ -10,7 +10,7 @@ COC_PLUGINS="coc-go"
 
 ### MacOS Packages
 BREW_PACKAGES="fzf neovim jq ripgrep exa zsh git go tmux stow python3 node k3d mas"
-BREW_CASK_PACKAGES="docker google-chrome visual-studio-code slack jira-client google-cloud-sdk"
+BREW_CASK_PACKAGES="docker google-chrome visual-studio-code slack jira-client google-cloud-sdk drawio"
 
 ### Alpine Linux Packages
 ALPINE_PACKAGES="fzf neovim jq exa zsh git go tmux stow openssh gcc python3-dev nodejs curl zsh npm"
