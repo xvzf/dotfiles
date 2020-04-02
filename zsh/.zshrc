@@ -55,12 +55,16 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/plugins/kubectl_lazyload.sh
 source ~/.zsh/keybindings.sh
 source ~/.secrets
 
+# Autocompletions
+source ~/.zsh/completions/_istioctl
+source ~/.zsh/plugins/kubectl_lazyload.sh
 case `uname` in
   Darwin)
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
     [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
     source /usr/local/opt/fzf/shell/key-bindings.zsh
     ;;
@@ -96,15 +100,16 @@ google-chrome() {
 # =============
 
 alias k=kubectl
-kgc(){kubectl config get-contexts $@}
-kcc(){kubectl config use-context $@}
+kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse)}
 
 ka(){kubectl apply $@}
 kd(){kubectl delete $@}
+kg(){kubectl get $@}
 kgp(){kubectl get pods -o wide $@}
 kga(){kubectl get all $@}
 kgi(){kubectl get ingress $@}
 kgs(){kubectl get services $@}
+kgns(){kubectl get namespaces $@}
 kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
 k_debug(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
