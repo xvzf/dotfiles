@@ -28,12 +28,9 @@ export TERM="xterm-256color"
 #     ;;
 # esac
 
-export GOPATH=$HOME/go
-export PATH="${PATH}:$HOME/bin/:$GOPATH/bin/:$HOME/.cargo/bin/:$GOROOT/bin:$GOROOT/bin"
+export PATH="${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/"
 
 # export ANSIBLE_HOST_KEY_CHECKING=False
-export GOMODULES111=on
-export GOPATH=$HOME/go
 
 
 # =============
@@ -62,8 +59,12 @@ source ~/.zsh/plugins/kubectl_lazyload.sh
 source ~/.zsh/keybindings.sh
 source ~/.secrets
 
-# [[ $- == *i* ]] && source "~/.fzf/shell/completion.zsh" 2> /dev/null
-# source ~/.fzf/shell/key-bindings.zsh
+case `uname` in
+  Darwin)
+    [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
+    ;;
+esac
 
 
 # =============
@@ -71,14 +72,15 @@ source ~/.secrets
 # =============
 
 if which exa &> /dev/null; then
+  alias ls=exa
+fi
+
+if which nvim &> /dev/null; then
   alias v=nvim
 else
   alias v=vim
 fi
 
-if which exa &> /dev/null; then
-  alias ls=exa # Use exa for better highlighting
-fi
 if which podman &> /dev/null; then
   alias docker=podman # Use podman on fedora hosts
 fi

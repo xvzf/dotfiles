@@ -3,14 +3,14 @@
 TARGET_USER="xvzf"
 
 ### Managed configs
-CONFIGS="zsh git tmux vim nvim"
+CONFIGS="zsh git tmux vim nvim fzf"
 
 ### Neoclide Plugins
 COC_PLUGINS="coc-go"
 
 ### MacOS Packages
 BREW_PACKAGES="fzf neovim jq ripgrep exa zsh git go tmux stow python3 node k3d"
-BREW_CASK_PACKAGES="docker google-chrome visual-studio-code"
+BREW_CASK_PACKAGES="docker google-chrome visual-studio-code alacritty"
 
 ### Alpine Linux Packages
 ALPINE_PACKAGES="fzf neovim jq exa zsh git go tmux stow openssh gcc python3-dev nodejs curl zsh npm"
@@ -31,11 +31,10 @@ case `uname` in
     # WOHOOO WE ARE RUNNING IN A CONTAINER \o/
     if [[ -f /etc/alpine-release ]]; then
       apk add --no-cache $ALPINE_PACKAGES
+      su $TARGET_USER
     fi
     ;;
 esac
-
-su $TARGET_USER
 
 # Symlink build files
 for CONFIG in $CONFIGS; do

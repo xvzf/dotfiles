@@ -16,3 +16,9 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "fzf/.fzf"]
+	path = fzf/.fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "tmux/.tmux/plugins/nord-tmux"]
+	path = tmux/.tmux/plugins/nord-tmux
+	url = https://github.com/arcticicestudio/nord-tmux.git
