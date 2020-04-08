@@ -21,7 +21,7 @@ export TERM="xterm-256color"
 # Depending on MacOS and Linux, set a different gopath
 # case `uname` in
 #   Darwin)
-#     export GOROOT=/usr/local/opt/go/libexec
+     export GOROOT=/usr/local/opt/go/libexec
 #     ;;
 #   Linux)
 #     export GOROOT=/usr/local/go
@@ -61,6 +61,7 @@ source ~/.secrets
 # Autocompletions
 source ~/.zsh/completions/_istioctl
 source ~/.zsh/plugins/kubectl_lazyload.sh
+source <(fly completion --shell zsh)
 case `uname` in
   Darwin)
     source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
