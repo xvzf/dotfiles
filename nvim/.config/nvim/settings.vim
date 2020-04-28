@@ -17,6 +17,8 @@ set nobackup
 set nowritebackup
 set history=50
 
+" Folding
+set foldmethod=marker
 
 " Copies using system clipboard
 if has('unnamedplus')
