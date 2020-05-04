@@ -100,6 +100,8 @@ google-chrome() {
 #   Custom Shortcuts
 # =============
 
+alias tf=terraform
+
 alias k=kubectl
 kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse)}
 
