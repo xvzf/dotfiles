@@ -9,4 +9,4 @@
 
 [alias]
         tree = log --graph --decorate --oneline --branches --tags --remotes --date=short -C -M
-        commit = commit -s
+        scommit = commit -s
