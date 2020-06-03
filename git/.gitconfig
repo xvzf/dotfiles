@@ -4,5 +4,9 @@
 	name = Matthias Riegler
 	email = matthias.riegler@taotesting.com
 
-[format]
-	signOff = True
+[core]
+        editor = nvim
+
+[alias]
+        tree = log --graph --decorate --oneline --branches --tags --remotes --date=short -C -M
+        scommit = commit -s
