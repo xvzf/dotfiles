@@ -38,10 +38,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('sheerun/vim-polyglot')
   call dein#add('Yggdroot/indentLine')
   call dein#add('arcticicestudio/nord-vim')
-  call dein#add('ayu-theme/ayu-vim')
-  " call dein#add('itchyny/lightline.vim')
+  call dein#add('sonph/onehalf', {'rtp': 'vim'})
   call dein#add('vim-airline/vim-airline')
-  
+
 
   call dein#end()
   call dein#save_state()

@@ -10,13 +10,21 @@ set signcolumn=yes
 
 " Colors
 if (has("termguicolors"))
+  set t_Co=256
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
+
+  let iterm_profile = $ITERM_PROFILE
+  if iterm_profile == "dark"
+    colorscheme onehalfdark
+    let g:airline_theme='onehalfdark'
+  else
+    colorscheme onehalflight
+    let g:airline_theme='onehalflight'
+  endif
+
 endif
-let g:nord_cursor_line_number_background = 1
-colorscheme nord
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ }
 
 " Startify settings
 let g:startify_change_to_vcs_root = 1

@@ -100,6 +100,25 @@ google-chrome() {
 #   Custom Shortcuts
 # =============
 
+theme-switch () {
+  echo -e "\033]50;SetProfile=$1\a"
+  export ITERM_PROFILE=$1
+  case $1 in
+    dark)
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
+    ;;
+    light)
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
+    ;;
+  esac
+}
+if [[ "$(date +%H:%M)" > "07:00" ]] || [[ "$(date +%H:%M)" < "20:00" ]]; then
+  # theme-switch light
+  theme-switch dark
+else
+  theme-switch dark
+fi
+
 alias tf=terraform
 
 # Kubernetes related
