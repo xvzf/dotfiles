@@ -102,9 +102,9 @@ google-chrome() {
 
 alias tf=terraform
 
+# Kubernetes related
 alias k=kubectl
 kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse)}
-
 ka(){kubectl apply $@}
 kd(){kubectl delete $@}
 kg(){kubectl get $@}
@@ -115,9 +115,10 @@ kgs(){kubectl get services $@}
 kgns(){kubectl get namespaces $@}
 kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
-k_debug(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
+kdbg(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
 
-dockerdev(){docker run -it --rm -v $HOME/projects:/home/xvzf/projects -v $HOME/.secrets:/home/xvzf/.secrets -v $HOME/.kube:/home/xvzf/.kube -v $HOME/.ssh:/home/xvzf/.ssh "quay.io/xvzf/devbox:latest" $@}
+# Concourse
+f(){fly -t $CONCOURSE_TARGET $@}
 
 # =============
 #   Functions
@@ -128,4 +129,3 @@ __cd_ls() {
   ls
 }
 alias cd=__cd_ls
-
