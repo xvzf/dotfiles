@@ -23,6 +23,7 @@ if dein#load_state('~/.cache/dein')
 
   " == Language support
   call dein#add('fatih/vim-go')
+  call dein#add('google/vim-jsonnet')
 
   " == Autocomplete, Snippets
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
@@ -37,8 +38,10 @@ if dein#load_state('~/.cache/dein')
   call dein#add('sheerun/vim-polyglot')
   call dein#add('Yggdroot/indentLine')
   call dein#add('arcticicestudio/nord-vim')
+  call dein#add('ayu-theme/ayu-vim')
   " call dein#add('itchyny/lightline.vim')
   call dein#add('vim-airline/vim-airline')
+  
 
   call dein#end()
   call dein#save_state()
