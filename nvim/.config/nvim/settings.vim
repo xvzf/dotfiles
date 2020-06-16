@@ -19,6 +19,12 @@ set history=50
 
 " Folding
 set foldmethod=marker
+"augroup AutoSaveFolds
+  "autocmd!
+  "autocmd BufWinLeave * mkview
+  "autocmd BufWinEnter * silent loadview
+"augroup END
+
 
 " Copies using system clipboard
 if has('unnamedplus')

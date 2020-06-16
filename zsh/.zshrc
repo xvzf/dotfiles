@@ -148,3 +148,6 @@ __cd_ls() {
   ls
 }
 alias cd=__cd_ls
+
+export PATH="$PATH:/Users/matthiasriegler/projects/nextgen/gitops/istio-1.6.1/bin"
+export EDITOR=nvim

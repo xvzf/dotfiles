@@ -1,6 +1,6 @@
 " Editor settings
 set visualbell
-set number
+set number relativenumber
 set numberwidth=5
 set laststatus=2
 set noshowmode
@@ -43,3 +43,14 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#show_buffers = 0
+
+" Have a nice looking fzf
+if has('nvim-0.4.0') || has("patch-8.2.0191")
+    let g:fzf_layout = { 'window': {
+                \ 'width': 0.9,
+                \ 'height': 0.8,
+                \ 'highlight': 'Comment',
+                \ 'rounded': v:false } }
+else
+    let g:fzf_layout = { "window": "silent botright 16split enew" }
+endif

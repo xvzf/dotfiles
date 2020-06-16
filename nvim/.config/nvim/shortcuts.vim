@@ -13,6 +13,7 @@ command! WQA wqa
 
 " Space as leader key
 let mapleader = " "
+let maplocalleader = ","
 map <C-n> :NERDTreeToggle<CR>
 
 " Easier indentation
