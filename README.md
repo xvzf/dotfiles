@@ -1,4 +1,4 @@
 # xvzf's Dotfiles
-[![Docker Repository on Quay](https://quay.io/repository/xvzf/devbox/status "Docker Repository on Quay")](https://quay.io/repository/xvzf/devbox)
+> Suited for DevOps & Development (Go, Python)
 
-Install using `sh setup.sh
+My personal dotfiles. Mostly ZSH and NeoVim conifg

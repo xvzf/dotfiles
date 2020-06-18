@@ -18,20 +18,10 @@ export ZSH="${HOME}/.zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
 
-# Depending on MacOS and Linux, set a different gopath
-# case `uname` in
-#   Darwin)
-     export GOROOT=/usr/local/opt/go/libexec
-#     ;;
-#   Linux)
-#     export GOROOT=/usr/local/go
-#     ;;
-# esac
+export GOROOT=/usr/local/opt/go/libexec
+
 
 export PATH="${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/"
-
-# export ANSIBLE_HOST_KEY_CHECKING=False
-
 
 # =============
 #   Plugins
@@ -113,7 +103,6 @@ theme-switch () {
   esac
 }
 if [[ "$(date +%H:%M)" > "07:00" ]] || [[ "$(date +%H:%M)" < "20:00" ]]; then
-  # theme-switch light
   theme-switch dark
 else
   theme-switch dark
@@ -131,6 +120,9 @@ kgp(){kubectl get pods -o wide $@}
 kga(){kubectl get all $@}
 kgi(){kubectl get ingress $@}
 kgs(){kubectl get services $@}
+kgg(){kubectl get Gatewayss $@}
+kgdr(){kubectl get DestinationRule $@}
+kgvs(){kubectl get VirtualService $@}
 kgns(){kubectl get namespaces $@}
 kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
@@ -143,11 +135,10 @@ f(){fly -t $CONCOURSE_TARGET $@}
 #   Functions
 # =============
 
-__cd_ls() {
-  cd $1;
-  ls
-}
+__cd_ls() { cd $1; ls; }
 alias cd=__cd_ls
+__bat() { bat --theme=OneHalfDark $@; }
+alias cat=__bat
 
 export PATH="$PATH:/Users/matthiasriegler/projects/nextgen/gitops/istio-1.6.1/bin"
 export EDITOR=nvim

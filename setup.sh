@@ -1,7 +1,5 @@
 #!/bin/sh -ex
 
-TARGET_USER="xvzf"
-
 ### Managed configs
 CONFIGS="zsh git tmux vim nvim fzf"
 
@@ -9,11 +7,8 @@ CONFIGS="zsh git tmux vim nvim fzf"
 COC_PLUGINS="coc-go"
 
 ### MacOS Packages
-BREW_PACKAGES="fzf neovim jq ripgrep exa zsh git go tmux stow python3 node k3d mas php composer packer terraform"
+BREW_PACKAGES="fzf neovim jq ripgrep bat exa zsh git go tmux stow python3 node k3d mas php composer packer terraform"
 BREW_CASK_PACKAGES="docker google-chrome visual-studio-code slack jira-client google-cloud-sdk drawio"
-
-### Alpine Linux Packages
-ALPINE_PACKAGES="fzf neovim jq exa zsh git go tmux stow openssh gcc python3-dev nodejs curl zsh npm"
 
 
 # ======================
@@ -26,13 +21,6 @@ case `uname` in
   Darwin)
     brew install $BREW_PACKAGES
     brew cask install $BREW_CASK_PACKAGES
-    ;;
-  Linux)
-    # WOHOOO WE ARE RUNNING IN A CONTAINER \o/
-    if [[ -f /etc/alpine-release ]]; then
-      apk add --no-cache $ALPINE_PACKAGES
-      su $TARGET_USER
-    fi
     ;;
 esac
 
