@@ -13,8 +13,6 @@ unset command_not_found_handle # Fedora fix :-)
 #   Settings
 # =============
 
-export ZSH_CUSTOM="${HOME}/.zsh/plugins/custom-oh-my-zsh"
-export ZSH="${HOME}/.zsh/plugins/oh-my-zsh"
 export VISUAL=vim
 export TERM="xterm-256color"
 
@@ -26,22 +24,8 @@ export PATH="${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/"
 # =============
 #   Plugins
 # =============
-
 # Include dircolors
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
-
-
-ZSH_THEME="xvzf"
-HYPHEN_INSENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-plugins=(
-  git
-  shrink-path
-)
-
-source $ZSH/oh-my-zsh.sh
+# test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -49,7 +33,6 @@ source ~/.zsh/keybindings.sh
 source ~/.secrets
 
 # Autocompletions
-source ~/.zsh/completions/_istioctl
 source ~/.zsh/plugins/kubectl_lazyload.sh
 source <(fly completion --shell zsh)
 case `uname` in
@@ -76,9 +59,6 @@ else
   alias v=vim
 fi
 
-if which podman &> /dev/null; then
-  alias docker=podman # Use podman on fedora hosts
-fi
 alias python=python3 # Just to be safe
 
 # If we are on macos, provide a shortcut to open google chrome
@@ -142,3 +122,8 @@ alias cat=__bat
 
 export PATH="$PATH:/Users/matthiasriegler/projects/nextgen/gitops/istio-1.6.1/bin"
 export EDITOR=nvim
+
+
+# Prompt
+eval "$(starship init zsh)"
+

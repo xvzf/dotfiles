@@ -1,0 +1,24 @@
+add_newline = false
+
+[line_break]
+disabled = true
+
+
+[kubernetes]
+# symbol = "⎈ "
+symbol = ""
+style = "blue"
+disabled = false
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+
+[username]
+show_always = true
+disabled = false
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
