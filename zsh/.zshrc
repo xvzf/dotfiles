@@ -108,6 +108,12 @@ kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
 kdbg(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
 
+# Git related
+gco(){git checkout $@}
+gf(){git fetch $@}
+gm(){git merge $@}
+gp(){git push $@}
+
 # Concourse
 f(){fly -t $CONCOURSE_TARGET $@}
 
