@@ -7,6 +7,7 @@ set noshowmode
 set ruler
 set cursorline
 set signcolumn=yes
+set scrolloff=8
 
 " Colors
 if (has("termguicolors"))

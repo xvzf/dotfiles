@@ -7,7 +7,7 @@ au BufNewFile,BufRead *.md,*.sh,*.tsx,*.yml,*.yaml*.sql,*.vim set
     \ softtabstop=2
     \ shiftwidth=2
 
-au BufNewFile,BufRead *.jsonnet,*.tf,*.js,*.jsx,*.ts,*.json, set
+au BufNewFile,BufRead *.libsonnet,*.jsonnet,*.tf,*.js,*.jsx,*.ts,*.json, set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
