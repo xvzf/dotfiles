@@ -1,6 +1,5 @@
 nvim/.cache/*
 nvim/.config/coc/
-nvim/.config/
 nvim/.config/asciinema/
 nvim/.config/configstore/
 nvim/.config/gcloud/
