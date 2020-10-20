@@ -35,6 +35,7 @@ source ~/.secrets
 # Autocompletions
 source ~/.zsh/plugins/kubectl_lazyload.sh
 source <(fly completion --shell zsh)
+source <(stern --completion=zsh)
 case `uname` in
   Darwin)
     source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
@@ -117,6 +118,11 @@ gp(){git push $@}
 # Concourse
 f(){fly -t $CONCOURSE_TARGET $@}
 
+# Gcloud
+gc(){gcloud $@}
+gcj(){gcloud $@ --format="json"}
+gcc(){gcloud config project set $(gcloud projects list --format="json" | jq '.[].name' -r | fzf --reverse)}
+
 # =============
 #   Functions
 # =============
@@ -126,10 +132,10 @@ alias cd=__cd_ls
 __bat() { bat --theme=OneHalfDark $@; }
 alias cat=__bat
 
-export PATH="$PATH:/Users/matthiasriegler/projects/nextgen/gitops/istio-1.6.1/bin"
 export EDITOR=nvim
 
 
 # Prompt
 eval "$(starship init zsh)"
 
+# gcloud beta deployment-manager types describe projects.instances.appProfiles --provider="bigtableadmin-v2" --project="gcp-types"

@@ -3,7 +3,6 @@ add_newline = false
 [line_break]
 disabled = true
 
-
 [kubernetes]
 # symbol = "⎈ "
 symbol = ""
@@ -15,6 +14,69 @@ disabled = false
 [username]
 show_always = true
 disabled = false
+
+[conda]
+disabled = true
+[crystal]
+disabled = true
+[dart]
+disabled = true
+[docker_context]
+disabled = true
+[dotnet]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[env_var]
+disabled = true
+[erlang]
+disabled = true
+[git_status]
+disabled = true
+[helm]
+disabled = true
+[java]
+disabled = true
+[julia]
+disabled = true
+[nim]
+disabled = true
+[nix_shell]
+disabled = true
+[nodejs]
+disabled = true
+[package]
+disabled = true
+[ocaml]
+disabled = true
+[perl]
+disabled = true
+[php]
+disabled = true
+[ruby]
+disabled = true
+[rust]
+disabled = true
+[singularity]
+disabled = true
+[swift]
+disabled = true
+[terraform]
+disabled = true
+[zig]
+disabled = true
+[purescript]
+disabled = true
+[cmd_duration]
+disabled = true
+[cmake]
+disabled = true
+[aws]
+disabled = true
+[gcloud]
+disabled = true
 
 [battery]
 disabled = false
