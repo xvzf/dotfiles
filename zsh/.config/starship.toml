@@ -12,6 +12,7 @@ disabled = false
 "dev.local.cluster.k8s" = "dev"
 
 [username]
+style_user = "bold blue"
 show_always = true
 disabled = false
 

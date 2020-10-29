@@ -1,6 +1,16 @@
 #=============
 #   CONSTANTS
 # =============
+#
+
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
 
 HISTFILE=~/.zsh_history
 SAVEHIST=2000
@@ -15,6 +25,7 @@ unset command_not_found_handle # Fedora fix :-)
 
 export VISUAL=vim
 export TERM="xterm-256color"
+export COLORTERM="truecolor"
 
 export GOROOT=/usr/local/opt/go/libexec
 
@@ -137,5 +148,3 @@ export EDITOR=nvim
 
 # Prompt
 eval "$(starship init zsh)"
-
-# gcloud beta deployment-manager types describe projects.instances.appProfiles --provider="bigtableadmin-v2" --project="gcp-types"
