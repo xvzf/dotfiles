@@ -122,16 +122,26 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
   " au BufWritePre *.py,*yaml,*.yml,*.sql,*.tf
       " \ %s/\s\+$//e
 
-  au BufNewFile,BufRead *.md,*.sh,*.tsx,*.yml,*.yaml*.sql,*.vim set
+  au BufNewFile,BufRead *.md,*.sh,*.tsx*.sql,*.vim set
       \ tabstop=2
       \ softtabstop=2
       \ shiftwidth=2
+      \ expandtab
+      \ smartindent
+      \ autoindent
       \ foldmethod=marker
+
+
+  au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
   au BufNewFile,BufRead *.libsonnet,*.jsonnet,*.json,*.js,*.tf set
       \ tabstop=2
       \ softtabstop=2
       \ shiftwidth=2
+      \ expandtab
+      \ smartindent
+      \ autoindent
       \ foldmethod=syntax
 
   au BufNewFile,BufRead *.go set
