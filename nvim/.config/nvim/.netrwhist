@@ -1,3 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/matthiasriegler/.dotfiles/nvim/.config/nvim'
+let g:netrw_dirhist_4='/Users/matthiasriegler/.dotfiles/zsh/.zsh'
+let g:netrw_dirhist_3='/Users/matthiasriegler'
+let g:netrw_dirhist_2='/Users/matthiasriegler/.cache'
 let g:netrw_dirhist_1='/Users/matthiasriegler/projects/nextgen/charts/deliver'

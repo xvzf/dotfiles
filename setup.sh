@@ -8,7 +8,7 @@ COC_PLUGINS="coc-go"
 
 ### MacOS Packages
 BREW_PACKAGES="fzf neovim jq ripgrep bat exa zsh git go tmux stow python3 node k3d mas php composer packer terraform starship stern"
-BREW_CASK_PACKAGES="docker google-chrome visual-studio-code slack jira-client google-cloud-sdk drawio"
+BREW_CASK_PACKAGES="docker google-chrome visual-studio-code slack jira-client google-cloud-sdk drawio kitty"
 
 
 # ======================
