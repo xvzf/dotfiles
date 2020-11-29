@@ -4,12 +4,9 @@ add_newline = false
 disabled = true
 
 [kubernetes]
-# symbol = "⎈ "
 symbol = ""
 style = "blue"
-disabled = false
-[kubernetes.context_aliases]
-"dev.local.cluster.k8s" = "dev"
+disabled = true
 
 [username]
 style_user = "bold blue"

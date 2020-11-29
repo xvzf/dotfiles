@@ -104,7 +104,7 @@ alias tf=terraform
 
 # Kubernetes related
 alias k=kubectl
-kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse)}
+kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse) && tmux refresh-client -S}
 ka(){kubectl apply $@}
 kd(){kubectl delete $@}
 kg(){kubectl get $@}

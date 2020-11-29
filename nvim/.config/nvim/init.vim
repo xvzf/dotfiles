@@ -19,6 +19,8 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
     " == Language support
     call dein#add('fatih/vim-go')
     call dein#add('google/vim-jsonnet')
+    call dein#add('vim-python/python-syntax')
+    call dein#add('hashivim/vim-terraform')
 
     " == Autocomplete, Snippets
     call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
@@ -92,6 +94,7 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     " }}}
 
+    let g:python_highlight_all = 1
 " }}}
 
 " Appearance {{{
@@ -113,7 +116,8 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
   highlight ExtraWhitespace ctermbg=red guibg=red
   match ExtraWhitespace /\s\+$/
-  set listchars=tab:>>,extends:>,precedes:<,space:·
+  " set listchars=tab:>>,extends:>,precedes:<,space:·
+  " set listchars=tab:>>,extends:>,precedes:<,space:·
   set list
 " }}}
 
@@ -122,7 +126,7 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
   " au BufWritePre *.py,*yaml,*.yml,*.sql,*.tf
       " \ %s/\s\+$//e
 
-  au BufNewFile,BufRead *.md,*.sh,*.tsx*.sql,*.vim set
+  au BufNewFile,BufRead *.md,*.sh,*.tsx*.sql,*.vim,*.proto set
       \ tabstop=2
       \ softtabstop=2
       \ shiftwidth=2
@@ -144,8 +148,6 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
       \ autoindent
       \ foldmethod=syntax
 
-  au BufNewFile,BufRead *.go set
-      \ foldmethod=syntax
 
   au BufNewFile,BufRead *.py set
       \ tabstop=4
