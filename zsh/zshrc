@@ -35,13 +35,23 @@ export PATH="${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/"
 # =============
 #   Plugins
 # =============
-# Include dircolors
-# test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/keybindings.sh
 source ~/.secrets
+
+# =============
+# Keybindings
+# =============
+function __one_dir_up() {
+  BUFFER="cd .."
+  zle accept-line
+}
+zle -N __one_dir_up
+bindkey "^k" __one_dir_up
+
+# Autocompletion with strg+space
+bindkey '^ ' autosuggest-accept
 
 # Autocompletions
 source ~/.zsh/plugins/kubectl_lazyload.sh
@@ -82,23 +92,23 @@ google-chrome() {
 #   Custom Shortcuts
 # =============
 
-theme-switch () {
-  echo -e "\033]50;SetProfile=$1\a"
-  export ITERM_PROFILE=$1
-  case $1 in
-    dark)
-      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
-    ;;
-    light)
-      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
-    ;;
-  esac
-}
-if [[ "$(date +%H:%M)" > "07:00" ]] || [[ "$(date +%H:%M)" < "20:00" ]]; then
-  theme-switch dark
-else
-  theme-switch dark
-fi
+# theme-switch () {
+#  echo -e "\033]50;SetProfile=$1\a"
+# export ITERM_PROFILE=$1
+#  case $1 in
+#    dark)
+#      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
+#    ;;
+#    light)
+#      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
+#    ;;
+#  esac
+#}
+#if [[ "$(date +%H:%M)" > "07:00" ]] || [[ "$(date +%H:%M)" < "20:00" ]]; then
+#  theme-switch dark
+#else
+#  theme-switch dark
+#fi
 
 alias tf=terraform
 
@@ -118,7 +128,7 @@ kgvs(){kubectl get VirtualService $@}
 kgns(){kubectl get namespaces $@}
 kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
-kdbg(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
+kdbg(){kubectl run tmp-net-debug-shell -it --image nicolaka/netshoot -- /bin/bash}
 
 # Git related
 gco(){git checkout $@}

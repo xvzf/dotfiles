@@ -1,0 +1,13 @@
+[user]
+  name = Matthias Riegler
+  email = matthias.riegler@taotesting.com
+
+[core]
+  editor = nvim
+
+[alias]
+  tree = log --graph --decorate --oneline --branches --tags --remotes --date=short -C -M
+  scommit = commit -s
+
+[init]
+	defaultBranch = main
