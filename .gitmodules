@@ -1,18 +1,6 @@
 [submodule "zsh/plugins/zsh-autosuggestions"]
-	path = zsh/.zsh/plugins/zsh-autosuggestions
+	path = zsh/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
-	path = zsh/.zsh/plugins/zsh-syntax-highlighting
+	path = zsh/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "vim/vim-plug"]
-	path = vim/.vim/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
-[submodule "nvim/.cache/dein/repos/github.com/Shougo/dein.vim"]
-	path = nvim/.cache/dein/repos/github.com/Shougo/dein.vim
-	url = https://github.com/Shougo/dein.vim.git
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
-[submodule "tmux/.tmux/plugins/nord-tmux"]
-	path = tmux/.tmux/plugins/nord-tmux
-	url = https://github.com/arcticicestudio/nord-tmux.git
