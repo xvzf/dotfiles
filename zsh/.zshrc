@@ -1,16 +1,19 @@
+autoload -Uz compinit
+compinit
+
 #=============
 #   CONSTANTS
 # =============
 #
 
-LANG="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_CTYPE="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 HISTFILE=~/.zsh_history
 SAVEHIST=2000
@@ -23,7 +26,8 @@ unset command_not_found_handle # Fedora fix :-)
 #   Settings
 # =============
 
-export VISUAL=vim
+export VISUAL=nvim
+export EDITOR="nvim"
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
 
@@ -40,27 +44,15 @@ export PATH="${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/"
 
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/keybindings.sh
 source ~/.secrets
 
 # Autocompletions
 source ~/.zsh/plugins/kubectl_lazyload.sh
-source <(fly completion --shell zsh)
 source <(stern --completion=zsh)
-case `uname` in
-  Darwin)
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-    [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
-    ;;
-esac
-
 
 # =============
 #   Alias
 # =============
-
 if which exa &> /dev/null; then
   alias ls=exa
 fi
@@ -71,40 +63,39 @@ else
   alias v=vim
 fi
 
-alias python=python3 # Just to be safe
-
-# If we are on macos, provide a shortcut to open google chrome
-google-chrome() {
-  open -a "Google Chrome" "$1"
-}
 
 # =============
 #   Custom Shortcuts
 # =============
 
-theme-switch () {
-  echo -e "\033]50;SetProfile=$1\a"
-  export ITERM_PROFILE=$1
-  case $1 in
-    dark)
-      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
-    ;;
-    light)
-      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
-    ;;
-  esac
+www() {
+  open -a "Google Chrome" "$1"
 }
-if [[ "$(date +%H:%M)" > "07:00" ]] || [[ "$(date +%H:%M)" < "20:00" ]]; then
-  theme-switch dark
-else
-  theme-switch dark
-fi
+
+# theme-switch () {
+#  echo -e "\033]50;SetProfile=$1\a"
+#  export ITERM_PROFILE=$1
+#  case $1 in
+#    dark)
+#      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
+#    ;;
+#    light)
+#      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
+#    ;;
+#  esac
+#}
+#if [[ "$(date +%H:%M)" > "07:00" ]] || [[ "$(date +%H:%M)" < "20:00" ]]; then
+#  theme-switch dark
+#else
+#  theme-switch dark
+#fi
 
 alias tf=terraform
+alias g=git
 
 # Kubernetes related
 alias k=kubectl
-kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse) && tmux refresh-client -S}
+kcc(){kubectl config use-context $(kubectl config get-contexts -o name | fzf --reverse --height 40%) && tmux refresh-client -S}
 ka(){kubectl apply $@}
 kd(){kubectl delete $@}
 kg(){kubectl get $@}
@@ -118,33 +109,27 @@ kgvs(){kubectl get VirtualService $@}
 kgns(){kubectl get namespaces $@}
 kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
-kdbg(){kubectl run --generator=run-pod/v1 tmp-net-debug-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash}
-
-# Git related
-gco(){git checkout $@}
-gf(){git fetch $@}
-gm(){git merge $@}
-gp(){git push $@}
-
-# Concourse
-f(){fly -t $CONCOURSE_TARGET $@}
-
-# Gcloud
-gc(){gcloud $@}
-gcj(){gcloud $@ --format="json"}
-gcc(){gcloud config project set $(gcloud projects list --format="json" | jq '.[].name' -r | fzf --reverse)}
+kdbg(){kubectl run tmp-net-debug-shell -it --rm --image nicolaka/netshoot -- /bin/bash}
 
 # =============
 #   Functions
 # =============
-
 __cd_ls() { cd $1; ls; }
 alias cd=__cd_ls
-__bat() { bat --theme=OneHalfDark $@; }
-alias cat=__bat
 
-export EDITOR=nvim
+# =============
+#   Keybindings
+# =============
+# go up one time
+function __one_dir_up() {
+  BUFFER="cd .."
+  zle accept-line
+}
+zle -N __one_dir_up
+bindkey "^k" __one_dir_up
 
+# Autocompletion with strg+space
+bindkey '^ ' autosuggest-accept
 
 # Prompt
 eval "$(starship init zsh)"
