@@ -1,8 +1,1 @@
-nvim/.cache/*
-nvim/.config/coc/
-nvim/.config/asciinema/
-nvim/.config/configstore/
-nvim/.config/gcloud/
-nvim/.config/hub
-vim/.vim/plugged/
-.DS_Store
+roles/elliotweiser.osx-command-line-tools/
