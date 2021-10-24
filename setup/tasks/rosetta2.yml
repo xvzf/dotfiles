@@ -1,0 +1,6 @@
+- name: check if rosetta is running
+  command: /usr/bin/pgrep oahd
+  register: rosetta_state
+  failed_when: rosetta_state.rc > 1
+- command: /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+  when: rosetta_state.rc != 0

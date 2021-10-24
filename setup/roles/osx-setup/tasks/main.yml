@@ -1,0 +1,7 @@
+- name: Copy OSX configuration script
+  copy: src=osx-runme.sh dest=$HOME/.dotfiles.d/osx-runme.sh  mode=0644 backup=yes
+  register: osx
+
+- name: Update OSX settings
+  command: sh $HOME/.dotfiles.d/osx-runme.sh
+  when: osx.changed

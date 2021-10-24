@@ -1,0 +1,15 @@
+- name: Download grml zsh config
+  get_url:
+    url: https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+    dest: $HOME/.zshrc
+    mode: '0644'
+
+- name: Copy homedir dotfiles
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/.{{ item }}"
+  with_items:
+  - zshrc.pre
+  - zshrc.local
+  - tmux.conf
+  - gitconfig

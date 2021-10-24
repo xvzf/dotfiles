@@ -1,0 +1,70 @@
+# All my macs are M1 based now
+setup_rosetta2: yes
+
+# Using Brewfile as it is *much* faster than the regular one-by-one installation
+homebrew_use_brewfile: true
+homebrew_brewfile_dir: "~/.dotfiles.d"
+
+mas_installed_apps:
+  - { id: 497799835, name: "Xcode" }
+  - { id: 441258766, name: "Magnet" }
+  - { id: 937984704, name: "Amphetamine" }
+  # seems like it's not supported on M1, tbc - { id: 997102246, name: "Spark - E-Mail-App from Readdle" }
+
+# MacOS Dock settings
+configure_dock: true
+dockitems_remove:
+  - Launchpad
+  - TV
+  - Maps
+  - Photos
+  - Numbers
+  - Pages
+  - App Store
+dockitems_persist:
+  - name: "Safari"
+    path: "/Applications/Safari.app/"
+    pos: 1
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app/"
+    pos: 2
+  - name: "Messages"
+    path: "/System/Applications/Messages.app"
+    pos: 3
+  - name: "Mail"
+    path: "/System/Applications/Mail.app"
+    pos: 4
+  - name: "Terminal"
+    path: "/System/Applications/Utilities/Terminal.app"
+    pos: 5
+  - name: "Visual Studio Code"
+    path: "/Applications/Visual Studio Code.app"
+    pos: 6
+  - name: "Notes"
+    path: "/System/Applications/Notes.app"
+    pos: 7
+  - name: "System Preferences"
+    path: "/System/Applications/System Preferences.app"
+    pos: 8
+  - name: "FaceTime"
+    path: "/System/Applications/FaceTime.app"
+    pos: 9
+  - name: "Calendar"
+    path: "/System/Applications/Calendar.app"
+    pos: 10
+  - name: "Contacts"
+    path: "/System/Applications/Contacts.app"
+    pos: 11
+  - name: "Reminders"
+    path: "/System/Applications/Reminders.app"
+    pos: 12
+  - name: "Music"
+    path: "/System/Applications/Music.app"
+    pos: 13
+  - name: "Podcasts"
+    path: "/System/Applications/Podcasts.app"
+    pos: 14
+  - name: "Keynote"
+    path: "/Applications/Keynote.app"
+    pos: 15
+
