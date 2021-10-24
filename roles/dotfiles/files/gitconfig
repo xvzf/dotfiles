@@ -18,7 +18,7 @@
   # Commit/Tag
   sc = commit -s
   t = tag
-	td = tag -d
+  td = tag -d
   # view
   s = status
   d = diff
@@ -36,16 +36,16 @@
   po = push origin
   pu = push upstream
   pl = pull
-	plo = pull origin
-	plu = pull upstream
+  plo = pull origin
+  plu = pull upstream
   f = fetch
-	fo = fetch origin
-	fu = fetch upstream
+  fo = fetch origin
+  fu = fetch upstream
   # Rebase
   rb = rebase
   rba = rebase --abort
-	rbc = rebase --continue
-	rbi = rebase --interactive
-	rbs = rebase --skip
+  rbc = rebase --continue
+  rbi = rebase --interactive
+  rbs = rebase --skip
 [init]
-	defaultBranch = main
+  defaultBranch = main
