@@ -3,7 +3,7 @@
 # Please adapt and uncomment the following lines:
 	name = Matthias Riegler
   username = xvzf
-	email = matthias.riegler@taotesting.com
+	email = matthias.riegler@traefik.io
 
 [core]
   editor = nvim
