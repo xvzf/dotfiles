@@ -38,7 +38,7 @@ dockitems_persist:
     path: "/System/Applications/Utilities/Terminal.app"
     pos: 5
   - name: "Visual Studio Code"
-    path: "/Applications/Visual Studio Code.app"
+    path: "~/Applications/Visual Studio Code.app"
     pos: 6
   - name: "Notes"
     path: "/System/Applications/Notes.app"
