@@ -9,7 +9,7 @@ mas_installed_apps:
   - { id: 497799835, name: "Xcode" }
   - { id: 441258766, name: "Magnet" }
   - { id: 937984704, name: "Amphetamine" }
-  # seems like it's not supported on M1, tbc - { id: 997102246, name: "Spark - E-Mail-App from Readdle" }
+  - { id: 1176895641, name: "Spark - Email App by Readdle" }
 
 # MacOS Dock settings
 configure_dock: true
