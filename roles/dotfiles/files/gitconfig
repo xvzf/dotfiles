@@ -31,6 +31,7 @@
   cp = cherry-pick
   m = merge
   # Clone/Push/Pull/Fetch
+  co = checkout
   cl = clone
   p = push
   po = push origin

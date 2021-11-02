@@ -41,6 +41,7 @@ lua <<EOF
 require("github-theme").setup {
   theme_style = "dark_default",
   function_style = "bold",
+  colors = {bg_search = "#e8da00", fg_search = "#333333"}
 }
 require('lualine').setup {
    options = {
