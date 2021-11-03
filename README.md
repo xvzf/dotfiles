@@ -8,4 +8,4 @@ My personal MacOS configuration; The idea of using ansible for bootstrappign pri
 1. run `xcode-select --install`
 2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 3. Download dependencies using `ansible-galaxy install -r requirements.yml`
-4. Run `ansible-playbook main.yml --ask-become-pass` (first run can take 1-2hrs)
+4. Run `arch -arm64 ansible-playbook main.yml --ask-become-pass` (first run can take 1-2hrs)
