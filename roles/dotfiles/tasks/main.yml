@@ -15,6 +15,7 @@
   - gitconfig
   - alacritty.yml
   - vimrc
+  - gpg.conf
 
 
 # Neovim config

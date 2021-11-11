@@ -10,6 +10,7 @@ cask_args appdir: "~/Applications", require_sha: true
 brew "argocd"
 brew "autoconf"
 brew "awscli"
+brew "gnupg"
 brew "cmake"
 brew "cowsay"
 brew "exa"

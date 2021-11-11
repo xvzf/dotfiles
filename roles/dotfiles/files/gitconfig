@@ -4,6 +4,7 @@
 	name = Matthias Riegler
   username = xvzf
 	email = matthias.riegler@traefik.io
+  signingkey = 4999031849279823
 
 [core]
   editor = nvim
@@ -16,7 +17,7 @@
 
   # Shortcuts
   # Commit/Tag
-  sc = commit -s
+  sc = commit -sS
   t = tag
   td = tag -d
   # view
