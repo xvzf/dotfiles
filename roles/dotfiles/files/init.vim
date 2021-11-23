@@ -1,12 +1,8 @@
 call plug#begin(stdpath('data') . '/plugged')
 
   " == Appearance
-  Plug 'projekt0n/github-nvim-theme'
   Plug 'nvim-lualine/lualine.nvim'
-
-  Plug 'rktjmp/lush.nvim'
-  Plug 'mcchrish/zenbones.nvim'
-  Plug 'projekt0n/github-nvim-theme'
+  Plug 'savq/melange'
 
   " == Navigation
   Plug 'junegunn/fzf', { 'build': './install', 'merged': 0 }
@@ -34,37 +30,24 @@ set encoding=UTF-8
 
 
 " Visuals/Drawing Settings
-set ttyfast lazyredraw termguicolors visualbell
+set ttyfast lazyredraw visualbell
+" Enable true color 启用终端24位色
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 
+colorscheme melange
 lua <<EOF
-require("github-theme").setup {
-  theme_style = "dark_default",
-  function_style = "bold",
-  colors = {bg_search = "#e8da00", fg_search = "#333333"}
-}
-require('lualine').setup {
-   options = {
-    section_separators = { left = ' ', right = ' '},
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', {'diagnostics', sources={'nvim_lsp'}}},
-    lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {'encoding'},
-    lualine_z = {'location'}
-
-  },
-
-}
+-- FIXME missing lualine config
 EOF
 set background=dark
 
 lua <<EOF
-require'lspconfig'.terraformls.setup{}
+-- require'lspconfig'.terraformls.setup{}
 require'lspconfig'.pyright.setup{}
-
 EOF
 
 
