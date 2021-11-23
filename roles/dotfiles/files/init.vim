@@ -78,6 +78,7 @@ set ts=2 sw=2 expandtab
 set hlsearch incsearch ignorecase smartcase
 set noshowcmd noruler cursorline number scrolloff=4
 set foldmethod=marker
+set fixendofline
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
