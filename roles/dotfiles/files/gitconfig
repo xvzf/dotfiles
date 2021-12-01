@@ -30,7 +30,7 @@
   lpo = log -p --oneline
   # Merge
   cp = cherry-pick
-  m = merge
+  m = merge -S
   # Clone/Push/Pull/Fetch
   co = checkout
   cl = clone
@@ -44,10 +44,14 @@
   fo = fetch origin
   fu = fetch upstream
   # Rebase
-  rb = rebase
+  rb = rebase -S
   rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase --interactive
   rbs = rebase --skip
 [init]
   defaultBranch = main
+
+# Allows private go deps
+[url "ssh://git@github.com"]
+  insteadOf = https://github.com
