@@ -16,6 +16,7 @@
   - alacritty.yml
   - vimrc
   - gpg.conf
+  - ssh/config
 
 
 # Neovim config
