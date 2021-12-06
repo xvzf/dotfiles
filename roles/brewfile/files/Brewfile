@@ -45,6 +45,7 @@ brew "rust"
 brew "sqlite"
 brew "tree-sitter"
 brew "llvm"
+brew "semaphoreci/tap/sem"
 
 # Kubernetes
 brew "argocd"
