@@ -58,6 +58,7 @@ brew "stern"
 brew "tanka"
 brew "wrk"
 brew "yamllint"
+brew "grafana/grafana/cortextool"
 
 # Terraform
 brew "terraform"
