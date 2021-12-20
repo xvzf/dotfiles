@@ -65,6 +65,7 @@ brew "wrk"
 brew "yamllint"
 brew "grafana/grafana/cortextool"
 brew "fluxcd/tap/flux"
+brew "clusterctl"
 
 # Terraform
 brew "terraform"

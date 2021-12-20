@@ -3,6 +3,8 @@ call plug#begin(stdpath('data') . '/plugged')
   " == Appearance
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'savq/melange'
+  Plug 'rktjmp/lush.nvim'
+  Plug 'folke/twilight.nvim'
 
   " == Navigation
   Plug 'junegunn/fzf', { 'build': './install', 'merged': 0 }
@@ -14,7 +16,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " == Language support
 
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}  " Advanced parsing and syntax highlighting
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Advanced parsing and syntax highlighting
   Plug 'neovim/nvim-lspconfig'
   Plug 'ray-x/go.nvim'
   Plug 'google/vim-jsonnet'
@@ -39,15 +41,44 @@ if exists('+termguicolors')
 endif
 
 
-colorscheme melange
 lua <<EOF
 -- FIXME missing lualine config
+package.loaded.melange = nil  -- Clear cache.
+require("lush")(require("melange"))
 EOF
-set background=dark
 
 lua <<EOF
--- require'lspconfig'.terraformls.setup{}
-require'lspconfig'.pyright.setup{}
+local nvim_lsp = require('lspconfig')
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<F6>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<a-cr>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+end
+
+nvim_lsp.pyright.setup{on_attach = on_attach}
+nvim_lsp.yamlls.setup {on_attach = on_attach}
+nvim_lsp.terraformls.setup{on_attach = on_attach}
+
+EOF
+
+lua <<EOF
+  require("twilight").setup{}
 EOF
 
 
