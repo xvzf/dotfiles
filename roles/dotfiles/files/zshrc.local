@@ -1,6 +1,6 @@
 
 # Update PATH
-export PATH="/opt/homebrew/bin:${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/:$HOME/Library/Python/3.8/bin"
+export PATH="/opt/homebrew/Cellar/gnu-sed/4.8/libexec/gnubin:/opt/homebrew/bin:${PATH}:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/:$HOME/Library/Python/3.8/bin"
 
 export VISUAL=nvim
 export EDITOR="nvim"
