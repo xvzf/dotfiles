@@ -48,6 +48,7 @@ kgns(){kubectl get namespaces $@}
 kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
 kdbg(){kubectl run tmp-net-debug-shell -it --rm --image nicolaka/netshoot -- /bin/bash}
+kgk() {kubectl get kustomization -o custom-columns=name:.metadata.name,suspend:.spec.suspend,status:".status.conditions[0].status",reason:".status.conditions[0].reason"} # Useful when working with flux
 
 
 # go up one time
