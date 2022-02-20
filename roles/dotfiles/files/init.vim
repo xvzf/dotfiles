@@ -15,7 +15,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-fugitive'
 
   " == Language support
-
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Advanced parsing and syntax highlighting
   Plug 'neovim/nvim-lspconfig'
   Plug 'ray-x/go.nvim'
@@ -48,6 +47,19 @@ require("lush")(require("melange"))
 EOF
 
 lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  sync_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+lua <<EOF
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -75,10 +87,9 @@ nvim_lsp.pyright.setup{on_attach = on_attach}
 nvim_lsp.yamlls.setup {on_attach = on_attach}
 nvim_lsp.terraformls.setup{on_attach = on_attach}
 
-EOF
+-- Twilight code section highlighting
+require("twilight").setup{}
 
-lua <<EOF
-  require("twilight").setup{}
 EOF
 
 
@@ -91,7 +102,6 @@ set undofile undodir="~/.vim/undo"
 set ts=2 sw=2 expandtab
 set hlsearch incsearch ignorecase smartcase
 set noshowcmd noruler cursorline number scrolloff=4
-set foldmethod=marker
 set fixendofline
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/

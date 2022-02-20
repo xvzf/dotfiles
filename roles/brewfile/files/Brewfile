@@ -5,8 +5,6 @@ tap "homebrew/cask-fonts"
 # set arguments for all 'brew install --cask' commands
 cask_args appdir: "~/Applications", require_sha: true
 
-
-
 # CLI
 brew "cowsay"
 brew "exa"
@@ -47,12 +45,12 @@ brew "rust"
 brew "sqlite"
 brew "tree-sitter"
 brew "llvm"
-brew "semaphoreci/tap/sem"
 brew "pre-commit"
 
 # Kubernetes
 brew "argocd"
 brew "grafana"
+brew "kubectx"
 brew "k3d"
 brew "kube-linter"
 brew "kubeval"
@@ -86,16 +84,17 @@ brew "packer"
 brew "pandoc"
 
 # 'brew install --cask'
+cask "alacritty"
 cask "discord"
-cask "docker"
 cask "drawio"
-cask "google-chrome"
-cask "keybase"
-cask "slack"
-cask "notion"
 cask "goland"
+cask "google-chrome"
+cask "google-cloud-sdk"
+cask "homebrew/cask-fonts/font-jetbrains-mono-nerd-font"
+cask "keybase"
+cask "mactex"
+cask "notion"
+cask "rancher"
+cask "slack"
 cask "vagrant"
 cask "visual-studio-code"
-cask "mactex"
-cask "alacritty"
-cask "homebrew/cask-fonts/font-jetbrains-mono-nerd-font"
