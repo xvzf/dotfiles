@@ -2,6 +2,7 @@
 window:
   title: Terminal
   dynamic_title: true
+  opacity: 1.0
 font:
   normal:
     family: JetBrainsMono Nerd Font
@@ -11,13 +12,12 @@ font:
     family: JetBrainsMono Nerd Font
   bold_italic:
     family: JetBrainsMono Nerd Font
-  size: 14
+  size: 15
 
 cursor:
   style:
     shape: Block
     blinking: On
-background_opacity: 1.0
 
 # src: https://raw.githubusercontent.com/savq/melange/master/term/alacritty/melange_dark.yml
 colors:
