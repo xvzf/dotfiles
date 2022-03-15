@@ -42,14 +42,13 @@ endif
 
 lua <<EOF
 -- FIXME missing lualine config
-package.loaded.melange = nil  -- Clear cache.
-require("lush")(require("melange"))
+-- package.loaded.melange = nil  -- Clear cache.
+-- require("lush")(require("melange"))
 EOF
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
-  sync_install = true,
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -58,6 +57,9 @@ require'nvim-treesitter.configs'.setup {
 EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+
+set bg=light
+colorscheme melange
 
 lua <<EOF
 local nvim_lsp = require('lspconfig')
@@ -84,8 +86,10 @@ local on_attach = function(client, bufnr)
 end
 
 nvim_lsp.pyright.setup{on_attach = on_attach}
-nvim_lsp.yamlls.setup {on_attach = on_attach}
+-- nvim_lsp.yamlls.setup {on_attach = on_attach}
 nvim_lsp.terraformls.setup{on_attach = on_attach}
+require'lspconfig'.jsonnet_ls.setup{on_attach = on_attach}
+require'lspconfig'.bashls.setup{}
 
 -- Twilight code section highlighting
 require("twilight").setup{}
