@@ -1,17 +1,16 @@
-#
 window:
   title: Terminal
   dynamic_title: true
   opacity: 1.0
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    family: IBM Plex Mono
   bold:
-    family: JetBrainsMono Nerd Font
+    family: IBM Plex Mono
   italic:
-    family: JetBrainsMono Nerd Font
+    family: IBM Plex Mono
   bold_italic:
-    family: JetBrainsMono Nerd Font
+    family: IBM Plex Mono
   size: 15
 
 cursor:
@@ -19,8 +18,32 @@ cursor:
     shape: Block
     blinking: On
 
-# src: https://raw.githubusercontent.com/savq/melange/master/term/alacritty/melange_dark.yml
-colors:
+# https://raw.githubusercontent.com/savq/melange/master/term/alacritty/melange_light.yml
+colors_light: &colors_light
+  primary:
+    foreground: '#6B5C4D'
+    background: '#F4F0ED'
+  normal:
+    black:   '#E9E1DB'
+    red:     '#D7898C'
+    green:   '#83B887'
+    yellow:  '#C29830'
+    blue:    '#485F84'
+    magenta: '#BE79BB'
+    cyan:    '#729893'
+    white:   '#A38D78'
+  bright:
+    black:   '#DED2C8'
+    red:     '#C65333'
+    green:   '#659E69'
+    yellow:  '#C29830'
+    blue:    '#485F84'
+    magenta: '#854882'
+    cyan:    '#436460'
+    white:   '#867462'
+
+# https://raw.githubusercontent.com/savq/melange/master/term/alacritty/melange_dark.yml
+colors_dark: &colors_dark
   primary:
     foreground: '#ECE1D7'
     background: '#2A2520'
@@ -42,3 +65,5 @@ colors:
     magenta: '#CE9BCB'
     cyan:    '#88B3B2'
     white:   '#C1A78E'
+
+colors: *colors_light

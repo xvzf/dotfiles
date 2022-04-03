@@ -58,7 +58,7 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-set bg=light
+" set bg=light
 colorscheme melange
 
 lua <<EOF
