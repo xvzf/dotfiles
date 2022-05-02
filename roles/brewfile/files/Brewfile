@@ -26,6 +26,7 @@ brew "wget"
 brew "coreutils"
 brew "yq"
 brew "zsh"
+brew "gsed"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
