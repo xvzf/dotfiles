@@ -2,6 +2,7 @@
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
+
 # set arguments for all 'brew install --cask' commands
 cask_args appdir: "~/Applications", require_sha: true
 
@@ -21,6 +22,7 @@ brew "pv"
 brew "tree"
 brew "ripgrep"
 brew "stow"
+brew "gron"
 brew "tmux"
 brew "wget"
 brew "coreutils"
@@ -89,9 +91,9 @@ cask "alacritty"
 cask "discord"
 cask "drawio"
 cask "goland"
-cask "google-chrome"
+# cask "google-chrome"
 cask "google-cloud-sdk"
-cask "homebrew/cask-fonts/ibm-plex-mono"
+# cask "ibm-plex-mono"
 cask "keybase"
 cask "mactex"
 cask "notion"
