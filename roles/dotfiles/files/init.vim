@@ -15,7 +15,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-fugitive'
 
   " == Language support
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Advanced parsing and syntax highlighting
+  Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate'}  " Advanced parsing and syntax highlighting
   Plug 'neovim/nvim-lspconfig'
   Plug 'ray-x/go.nvim'
   Plug 'google/vim-jsonnet'
@@ -48,7 +48,6 @@ EOF
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -58,7 +57,6 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-" set bg=light
 colorscheme melange
 
 lua <<EOF
@@ -111,6 +109,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 let g:jsonnet_fmt_on_save = 0
+
+" set bg=light
 
 vnoremap < <gv
 vnoremap > >gv
