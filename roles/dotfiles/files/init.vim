@@ -1,4 +1,5 @@
 call plug#begin(stdpath('data') . '/plugged')
+  Plug 'nvim-lua/plenary.nvim'
 
   " == Appearance
   Plug 'nvim-lualine/lualine.nvim'
@@ -13,6 +14,9 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " == VC Support
   Plug 'tpope/vim-fugitive'
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'sindrets/diffview.nvim'
+
 
   " == Language support
   Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate'}  " Advanced parsing and syntax highlighting
@@ -41,9 +45,8 @@ endif
 
 
 lua <<EOF
--- FIXME missing lualine config
--- package.loaded.melange = nil  -- Clear cache.
--- require("lush")(require("melange"))
+require('gitsigns').setup()
+
 EOF
 
 lua <<EOF
@@ -54,8 +57,13 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+" Foldmethods
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+" Nice way to fold multi-stage dockerfiles; credit to @jzck
+autocmd FileType dockerfile setlocal foldmethod=expr
+autocmd FileType dockerfile setlocal foldexpr=get(split(getline(v:lnum)),0,'')==?'FROM'?'>1':'='
 
 colorscheme melange
 
