@@ -1,5 +1,7 @@
 # Update PATH
 export PATH="/opt/homebrew/bin:$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/:${PATH}"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 
 export VISUAL=nvim
 export EDITOR="nvim"
@@ -50,7 +52,27 @@ kgss(){kubectl get secrets $@}
 kgcm(){kubectl get cm $@}
 kdbg(){kubectl run tmp-net-debug-shell -it --rm --image nicolaka/netshoot -- /bin/bash}
 kgk() {kubectl get kustomization -o custom-columns=name:.metadata.name,suspend:.spec.suspend,status:".status.conditions[0].status",reason:".status.conditions[0].reason"} # Useful when working with flux
+kgoom() {
+  kubectl get pods "$@" --output=jsonpath='{ range .items[*] }{.metadata.namespace}    {.metadata.name}    {.status.containerStatuses[*].name}    {.status.containerStatuses[*].lastState.terminated.reason }    {.status.containerStatuses[*].lastState.terminated.finishedAt}{"\n"}{end}' | grep OOMKilled
+}
+klogs() {
+  set -o pipefail
+  PODS=$(kubectl get pods "$@" --field-selector status.phase=Running -o=jsonpath='{ range .items[*] }{.metadata.name} {.spec.containers[*].name}{"\n"}{ end }' --no-headers)
 
+  if [[ -z $PODS ]]; then
+    echo "No pods found in this namespace"
+    exit 1
+  fi
+
+  allContainers=""
+  while read -r line; do
+    pod=$(echo "$line" | grep -Eo "^[A-Za-z0-9-]+")
+    newContainers=$(echo "$line" | sed "s/$pod //" | gsed -E "s/([A-Za-z0-9-]+) ?/$pod --container=&\\n/g" | sed "/^$/d")
+    allContainers="$allContainers$newContainers"$'\n'
+  done <<< "$PODS"
+
+  echo "$allContainers" | fzf --prompt "choose pod/container > " --preview "echo {} | xargs kubectl logs $* --tail=50" --height=100% --preview-window=right:80% --layout=default --bind="enter:execute(echo {} | xargs kubectl logs $* | bat --color always)+abort"
+}
 
 # go up one time
 function __one_dir_up() {
@@ -65,7 +87,7 @@ bindkey '^ ' autosuggest-accept
 
 secret () {
         output=~/"${1}".$(date +%s).enc
-        gpg --encrypt --armor --output ${output} -r 0x0000 -r 0x0001 -r 0x0002 "${1}" && echo "${1} -> ${output}"
+        gpg --encrypt --armor --output ${output} -r matthias@xvzf.tech "${1}" && echo "${1} -> ${output}"
 }
 
 reveal () {
@@ -74,5 +96,17 @@ reveal () {
 }
 
 workmode () {
+  export WORKMODE=1
+  export ANKORSTORE_ZSH_PLUGIN_DISABLE=1
+  source $(brew --prefix)/share/ankor/ankor.zsh
   export KUBECONFIG=~/.kube/config-ankorstore
+  source <(ankor-plugin-zsh)
 }
+
+# Check if we are in workmode (by env var). If yes, load stuff
+if [ ! -z "$WORKMODE" ]; then
+  workmode
+fi
+
+
+

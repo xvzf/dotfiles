@@ -11,6 +11,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/fzf', { 'build': './install', 'merged': 0 }
   Plug 'junegunn/fzf.vim', { 'depends': 'fzf' }
   Plug 'phaazon/hop.nvim'
+  Plug 'liuchengxu/vim-which-key'
 
   " == VC Support
   Plug 'tpope/vim-fugitive'
@@ -25,6 +26,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'google/vim-jsonnet'
   Plug 'hashivim/vim-terraform'
   Plug 'tsandall/vim-rego'
+
+  Plug 'github/copilot.vim'
 call plug#end()
 
 
@@ -66,6 +69,7 @@ autocmd FileType dockerfile setlocal foldmethod=expr
 autocmd FileType dockerfile setlocal foldexpr=get(split(getline(v:lnum)),0,'')==?'FROM'?'>1':'='
 
 colorscheme melange
+set bg=light
 
 lua <<EOF
 local nvim_lsp = require('lspconfig')
@@ -118,7 +122,7 @@ match ExtraWhitespace /\s\+$/
 
 let g:jsonnet_fmt_on_save = 0
 
-" set bg=light
+set bg=dark
 
 vnoremap < <gv
 vnoremap > >gv
@@ -136,5 +140,7 @@ command! Wqa wqa
 command! WQa wqa
 command! WQA wqa
 
+let mapleader = ' '
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <C-p> :Files<CR>
 imap <C-c> <Esc>
