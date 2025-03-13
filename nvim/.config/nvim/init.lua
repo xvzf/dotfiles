@@ -190,11 +190,6 @@ require("lazy").setup({
     end
   }
 
-  -- Searching
-  -- { "junegunn/fzf", build = function() vim.fn["fzf#install"]() end },
-  -- { "junegunn/fzf.vim" },
-
-
   -- { "github/copilot.vim" },
 })
 
