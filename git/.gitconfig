@@ -3,7 +3,7 @@
 # Please adapt and uncomment the following lines:
 	name = Matthias Riegler
   username = xvzf
-	email = matthias.riegler@ankorstore.com
+	email = me@xvzf.tech
   signingkey = 4999031849279823
 
 [core]
@@ -58,3 +58,5 @@
 # Allows private go deps
 [url "ssh://git@github.com"]
   insteadOf = https://github.com
+[url "ssh://git@gitlab.com"]
+  insteadOf = https://gitlab.com

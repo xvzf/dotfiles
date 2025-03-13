@@ -1,3 +1,0 @@
-- name: Copy Brewfile
-  copy: src=Brewfile dest=$HOME/.dotfiles.d/Brewfile  mode=0644 backup=yes
-  register: osx

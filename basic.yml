@@ -1,7 +1,0 @@
-- hosts: all
-  vars_files:
-  - config.xvzf.yml
-
-  roles:
-  - role: dotfiles
-    tags: ['dotfiles']

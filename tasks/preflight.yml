@@ -1,5 +1,0 @@
-# Directory structure
-- name: Make sure ~/.dotfiles.d exists
-  file:
-    path: $HOME/.dotfiles.d
-    state: directory
