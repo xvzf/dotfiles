@@ -13,13 +13,19 @@ require("lazy").setup({
     priority = 1000,
     -- you can set set configuration options here
     config = function()
-      local hour = tonumber(os.date("%H"))
-
-      -- Choose the correct theme variant
-      local bg = (hour >= 7 and hour < 18) and "light" or "dark"
-
       vim.cmd.colorscheme('zenbones')
-      vim.o.background = bg
+
+      local fs_poll = vim.loop.new_fs_poll()
+      fs_poll:start(os.getenv("HOME") .. "/.dark", 1000, vim.schedule_wrap(function()
+        local theme_file = os.getenv("HOME") .. "/.dark"  -- Change this to your file path
+        local file = io.open(theme_file, "r")
+        if file then
+            io.close(file)
+            vim.o.background = "dark"
+        else
+            vim.o.background = "light"
+        end
+      end))
     end
   },
 
@@ -91,13 +97,13 @@ require("lazy").setup({
       })
     end
   },
+
+
+  -- Language specific
   {
-    "mhartington/formatter.nvim",
-    dependencies = {
-      "mason.nvim",
-    },
-    config = function()
-      require("formatter").setup()
+    "ray-x/go.nvim",
+    config = function ()
+       require("go").setup()
     end
   },
 
@@ -150,6 +156,23 @@ require("lazy").setup({
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        desc = 'LSP actions',
+        callback = function(event)
+          local opts = {buffer = event.buf}
+
+          vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+          vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+          vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+          vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+          vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+        end,
+      })
     end
   },
   {

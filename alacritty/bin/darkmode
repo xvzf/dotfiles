@@ -2,14 +2,9 @@
 
 # Read args
 if [[ $# -lt 1 ]]; then
-  echo "[!] At least one parameter is required"
-  exit 1
-fi
-
-if [[ $1 == "dark" ]]; then
   ln -fs "$HOME/.alacritty.toml.dark" "$HOME/.alacritty.toml"
   touch "$HOME/.dark"
-else 
+else
   ln -fs "$HOME/.alacritty.toml.light" "$HOME/.alacritty.toml"
   rm -f "$HOME/.dark"
 fi
