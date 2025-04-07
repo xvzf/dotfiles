@@ -126,3 +126,6 @@ function sssh ()
     done
 }
 
+
+# Created by `pipx` on 2025-04-07 13:34:22
+export PATH="$PATH:/home/xvzf/.local/bin"

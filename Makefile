@@ -1,8 +1,8 @@
 TARGETS ?= $(wildcard */)
 SERVER_TARGETS ?= tmux vim zsh
 
-all: $(addprefix apply-,$(TARGETS))
-server: $(addprefix apply-,$(SERVER_TARGETS))
+fullconfig: $(addprefix apply-,$(TARGETS))
+serverconfig: $(addprefix apply-,$(SERVER_TARGETS))
 
 ensure-bin:
 	mkdir -p $(HOME)/bin/
@@ -12,3 +12,9 @@ apply-%: ensure-bin
 
 rollback-%:
 	stow --verbose --target $(HOME) --delete $*
+
+ubuntu: fullconfig
+	_setup/chrome-setup.sh
+	_setup/code-setup.sh
+	_setup/font-bootstrap.sh
+	_setup/gnome-bootstrap.sh

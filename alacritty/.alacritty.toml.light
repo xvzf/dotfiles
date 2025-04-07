@@ -24,20 +24,24 @@ background = "#F0EDEC"
 foreground = "#2C363C"
 
 [font]
-size = 15
+size = 13
 
 [font.bold]
-family = "IBM Plex Mono"
+family = "BlexMono Nerd Font"
 
 [font.bold_italic]
 
 [font.italic]
-family = "IBM Plex Mono"
+family = "BlexMono Nerd Font"
 
 [font.normal]
-family = "IBM Plex Mono"
+family = "BlexMono Nerd Font"
 
 [window]
 dynamic_title = true
 opacity = 1.0
 title = "Terminal"
+
+[shell]
+program = "tmux"
+args = ["new-session", "-A", "-D", "-s", "alacritty"]
