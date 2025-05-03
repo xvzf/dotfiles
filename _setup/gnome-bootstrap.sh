@@ -104,10 +104,10 @@ gsettings set org.gnome.shell.extensions.tophat network-usage-unit bits
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super>w']"
 
 # Make it easy to maximize like you can fill left/right
-gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super><Enter>']"
+gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Return']"
 
 # Full-screen with title/navigation bar
-gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Shift>F11']"
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
 
 gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 4
@@ -145,5 +145,5 @@ gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.calendar show-weekdate true
 
 # Text scaling
-gsettings set org.gnome.desktop.interface text-scaling-factor 0.8
-gsettings set org.gnome.desktop.interface cursor-size 16
+gsettings set org.gnome.desktop.interface text-scaling-factor 0.9
+gsettings set org.gnome.desktop.interface cursor-size 20
