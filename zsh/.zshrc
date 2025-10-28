@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-
 export PATH="$HOME/bin/:$HOME/go/bin/:$HOME/.cargo/bin/:$PATH"
 # On MacOS, use homebrew binaries
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -7,6 +6,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
 fi
 
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+
+# FIXME: add to dotfiles
+export MAKEFLAGS="SHELL=/bin/bash"
 
 mkdir -p "$HOME/.zsh"
 
@@ -104,6 +108,9 @@ klogs() {
 
   echo "$allContainers" | fzf --prompt "choose pod/container > " --preview "echo {} | xargs kubectl logs $* --tail=50" --height=100% --preview-window=right:80% --layout=default --bind="enter:execute(echo {} | xargs kubectl logs $* | tspin)+abort"
 }
+kgno() {
+  kg no -o custom-columns='name:.metadata.name,address:.status.addresses[0].address,zone:.metadata.labels.topology\.kubernetes\.io/zone,status:status.conditions[-1].type,version:.status.nodeInfo.kubeletVersion' $@
+}
 
 
 # GPG utils
@@ -125,7 +132,3 @@ function sssh ()
         [ $? -ne 255 ] && break || sleep 0.5;
     done
 }
-
-
-# Created by `pipx` on 2025-04-07 13:34:22
-export PATH="$PATH:/home/xvzf/.local/bin"
